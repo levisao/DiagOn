@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>DiagOn</title>
+		<meta charset="UTF-8">
+		<link rel="shortcut icon"  a href="https://png.icons8.com/wired/2x/medical-thermometer.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		
+	<style>
+		body{
+			 background-image: url("https://polizei-news-agenturbelmediag.netdna-ssl.com/wp-content/uploads/2014/04/Gesundheitswesen-everything-possible-Shutterstock.com_.jpg");
+			 background-size: auto;
+			 background-repeat: no-repeat;
+			 background-size: 100% 100%;
+			}
+		h1{
+			align: center;
+			valign: middle;
+		}
+#inicio{
+	position: absolute;
+    
+    width: 300px;
+    height: 300px;
+    margin-top: -150px;
+    margin-left: -150px;
+    top: 50%;
+    left: 50%;
+	text-align:center;
+	
+}		
+	</style>
+	</head>
+	<body>
