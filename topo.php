@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 		<title>DiagOn</title>
@@ -19,16 +20,24 @@
 		}
 #inicio{
 	position: absolute;
-    
     width: 300px;
     height: 300px;
     margin-top: -150px;
     margin-left: -150px;
-    top: 50%;
-    left: 50%;
+    top: 80%;
+    left: 82%;
 	text-align:center;
-	
-}		
+	}
+#cadastro{
+	position: absolute;
+    width: 400px;
+    height: 400px;
+    margin-top: -150px;
+    margin-left: -150px;
+    top: 65%;
+    left: 40%;
+	text-align:center;
+	}	
 	</style>
 	</head>
 	<body>
