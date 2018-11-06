@@ -88,25 +88,28 @@
 
 ?>
 
+<div id="cadastro">
 <h1>Cadastro de usuário</h1>
 
-<form method="post">
+<form method="post" class="w3-container">
+ 
+  <input class="w3-input" type="text" name="nome" maxlength="100" required>
   <label>Nome</label>
-  <input class="form-control" type="text" name="nome" maxlength="100" required>
-  
-  <label>Login</label>
-  <input class="form-control" type="text" name="login" maxlength="100" required>
-
-  <label>Email</label>
-  <input type="email" name="email" class="form-control" ></textarea>
-
-  <label>Senha</label>
-  <input class="form-control" type="password" name="senha" maxlength="100" required>
+ <br> 
+  <input class="w3-input" type="text" name="login" maxlength="100" required>
+    <label>Login</label>
+<br>
+  <input type="email" name="email" class="w3-input">
+    <label>Email</label>
+<br>
+   <input class="w3-input" type="password" name="senha" maxlength="100" required>
+   <label>Senha</label>
 
   <br>
-  <a class="btn btn-light" href="iniciar.php">Cancelar</a>
-  <button class="btn btn-primary" type="submit">Salvar</button>
+  <a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="iniciar.php">Cancelar</a>
+  <button class="w3-button w3-green w3-border w3-border-Blue w3-round-large">Salvar</button>
 </form>
+</div>
 
 
 	</body>
