@@ -60,16 +60,21 @@ if ($_POST != NULL) {
 
 ?>
 
-<h1>Login</h1>
+<div id="inicio">
+<h1><b>Login</b></h1>
 
-<form method="post">
-	<label>Login</label>
-	<input type="text" name="login" class="form-control" required>
-
-	<label>Senha</label>
-	<input type="password" name="senha" class="form-control" required>
-
-	<br>
-	<button class="btn btn-primary" type="submit">Entrar</button>
+<form method="post" class="w3-container">
+	
+	<input type="text" name="login"  class="w3-input" required>
+<label>Login</label>
+	
+	<input type="password" name="senha" class="w3-input" required>
+<label>Senha</label>
+<br>	<br>
+	<button class="w3-button w3-green w3-border w3-border-Blue w3-round-large">Entrar</button>
+	<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="iniciar.php">Cancelar</a>
 </form>
+</div>
+</body>
+</html>
 
