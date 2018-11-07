@@ -42,8 +42,8 @@ if ($_POST != NULL) {
 
 		// Guarda variáveis na sessão
 		$_SESSION["logado"] = true;
-		$_SESSION["nome_cadastro"] = $registro["nome"];
-		$_SESSION["id_cadastro"] = $registro["id"];
+		$_SESSION["nome_usuario"] = $registro["nome"];
+		$_SESSION["id_usuario"] = $registro["id"];
 
 		// Redireciona para a página principal
 		header("Location: post.php");
