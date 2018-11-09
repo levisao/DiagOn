@@ -1,5 +1,5 @@
 <?php 
-include_once "topo.php"; 
+include_once "topopost.php"; 
 
 session_start();
 
@@ -8,9 +8,36 @@ session_start();
       header("Location: login.php");
   }
 
+  // Obtem ID
+$id = $_SESSION["id_usuario"];  
 
 $nome = $_SESSION["nome_usuario"];
 
+// Conecta ao DB
+include_once "bd.php";
+
+// Cria comando SQL
+$sql = "SELECT *
+		FROM perfil 
+		WHERE id = '$id'";
+
+// Executa SQl no DB
+$retorno = $con->query($sql);
+
+// Deu erro?
+if ($retorno == false){ 
+	echo $con->error; 
+}
+
+$registro = $retorno->fetch_array();
+
+if($registro){
+	
+$_SESSION["perfil_usuario"] = $registro["perfil"];
+$perfil = $registro["perfil"];
+} else{
+    $perfil = ""; // poderia criar o perfil aqui logo
+}
 
 ?>
 
