@@ -35,8 +35,7 @@ $retorno = $con->query($sql);
 if ($retorno == false){ 
 	echo $con->error; 
 }
-if($retorno){  //como fazer para se n retornar nada adicionar o campo?
-}
+
 
 
 // Obtem registro
@@ -58,8 +57,10 @@ if($registro == NULL){
 
 }
 
+
 // Obtem campos do registro
 $perfil = $registro["perfil"];
+
 
 // Clicou em salvar?
 if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
@@ -67,7 +68,8 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 
 	// Obtém dados do POST
 	$perfil = $_POST["perfil"];
-	
+	$_SESSION["perfil_usuario"] = $perfil;   //
+
 	
 
 	// Valida campos obrigatórios
@@ -100,7 +102,8 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 
 	    // Salvou no BD?
 	    if ($retorno) {
-
+		
+		
 	      echo "<script> 
 	              alert('Atualizado com Sucesso!');
 	              location.href = 'post.php';
