@@ -68,44 +68,87 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 
 	// Obtém dados do POST
 	$perfil = $_POST["perfil"];
-	$_SESSION["perfil_usuario"] = $perfil;   //
+	$_SESSION["perfil_usuario"] = $perfil;
+	$foto = $_POST["foto"];
+	$_SESSION["foto_usuario"] =  $foto;
 
 	
 
 	// Valida campos obrigatórios
 	if ($perfil == "") {
-
+	
 	    echo "<script> 
 	            alert('Preencha corretamente!');
 	          </script>";
 
 	} else {
-
+		
+	
 	  // Cria comando SQL
 	  $sql3 = "UPDATE perfil 
-	  		  SET perfil = ?
+	  		  SET perfil = ?, data = ?
 	  		   WHERE id = ?";
+		
+	if($foto != ""){
+		
+		
+		
+		$sql4 = "UPDATE cadastro 
+	  		  SET foto = ?
+	  		   WHERE id = ?";	
+
+	$preparacao1 = $con->prepare($sql4);
+	
+	if($preparacao1){
+		
+		$preparacao1->bind_param("si", 
+	                          $foto,
+							  $id);
+							  
+	$retorno1 = $preparacao1->execute();
+	
+	}
+	} else {
+	$foto = $_SESSION["foto_usuario"];
+	}
 
 	  // Prepara query
 	  $preparacao = $con->prepare($sql3);
+	  
 
 	  // Deu erro?
 	  if ($preparacao) {
 
 	    // Passa os parâmetros para a query
-	    $preparacao->bind_param("si", 
-	                          $perfil,  
+	    $preparacao->bind_param("ssi", 
+	                          $perfil,
+								date("Y-m-d H:i:s"),
 	                          $id);
 
 	    // Executa query no BD
 	    $retorno = $preparacao->execute();
+		
+		
+		if ($retorno1) {
+		
+		
+	      echo "<script> 
+	              alert('Foto Atualizada com Sucesso!');
+	            </script>";
+
+	    // Deu erro..
+	    } else {
+
+	      echo $preparacao1->error;
+
+	    }
 
 	    // Salvou no BD?
 	    if ($retorno) {
 		
 		
 	      echo "<script> 
-	              alert('Atualizado com Sucesso!');
+	              alert('Perfil Atualizado com Sucesso!');
 	              location.href = 'post.php';
 	            </script>";
 
@@ -113,7 +156,7 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 	    } else {
 
 	      echo "<script> 
-	              alert('Erro ao Atualizar!');
+	              alert('Erro ao Atualizar Perfil!');
 	            </script>";
 
 	      echo $preparacao->error;
@@ -136,9 +179,12 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 
 <form method="post">
 	<table class="table table-bordered">
-	
-
+	Digite url da foto:
+	<textarea name="foto"></textarea> 
+	Atualize seu perfil:
 	<textarea name="perfil"><?php echo $perfil;?></textarea>
+	
+	<!-- <input type="file" name="foto" id="fileToUpload"> -->
 	
 	</table>
 	<a class="btn btn-light" href="post.php">Cancelar</a>
