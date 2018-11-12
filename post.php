@@ -51,7 +51,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
 
-<h1>Olá, <?php echo $nome  ?></h1>
+<h1>É um lindo dia para salvar vidas, <?php echo $nome  ?></h1>
 
 
 
@@ -62,13 +62,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <i class="fa fa-remove"></i>
     </a>
     <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" style="width:80%;" class="w3-round"><br><br>
-    <h4><b>PORTFOLIO</b></h4>
-    <p class="w3-text-grey">Template by W3.CSS</p>
+	<h4><b><?php echo $nome ?></b></h4>
+	<a  style='font-size:24px' class='far' href="editarperfil.php" >Editar Perfil<i class='far fa-edit'></i></a>
+    <!--<p class="w3-text-grey">Template by W3.CSS</p>-->
   </div>
   <div class="w3-bar-block">
     <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+    <a href="#creators" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CREATORS</a>
   </div>
   <div class="w3-panel w3-large">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -91,7 +92,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
-    <h1><b>My Portfolio</b></h1>
+    <h1><b>Diagnóstico</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
       <span class="w3-margin-right">Filter:</span> 
       <button class="w3-button w3-black">ALL</button>
@@ -175,11 +176,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
 
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-    <h4><b>About Me</b></h4>
-    <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+    <h4><b>About me</b></h4>
+     <?php echo $perfil; ?>
     <hr>
     
-    <h4>Technical Skills</h4>
+    <h4>Especialidades</h4>
     <!-- Progress bars / Skills -->
     <p>Photography</p>
     <div class="w3-grey">
@@ -199,84 +200,32 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </button>
     </p>
     <hr>
-    
-    <h4>How much I charge</h4>
-    <!-- Pricing Tables -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-third w3-margin-bottom">
-        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-black w3-xlarge w3-padding-32">Basic</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">1GB Storage</li>
-          <li class="w3-padding-16">Mail Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 10</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="w3-third w3-margin-bottom">
-        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-teal w3-xlarge w3-padding-32">Pro</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">50GB Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 25</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="w3-third">
-        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">Unlimited Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
-          <li class="w3-padding-16">
-            <h2>$ 25</h2>
-            <span class="w3-opacity">per month</span>
-          </li>
-          <li class="w3-light-grey w3-padding-24">
-            <button class="w3-button w3-teal w3-padding-large w3-hover-black">Sign Up</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+
   
   <!-- Contact Section -->
   <div class="w3-container w3-padding-large w3-grey">
-    <h4 id="contact"><b>Contact Me</b></h4>
+    <h4 id="creators"><b>Criadores</b></h4>
     <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p>email@email.com</p>
+        <p>amandanfsoares@gmail.com</p>
+		<p>levi.paganucci@gmail.com</p>
       </div>
       <div class="w3-third w3-teal">
         <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-        <p>Chicago, US</p>
+        <p>Salvador, BA</p>
+		<p>Salvador, BA</p>
       </div>
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-        <p>512312311</p>
+        <p>991922456</p>
+        <p>999624185</p>
       </div>
     </div>
     <hr class="w3-opacity">
     <form action="/action_page.php" target="_blank">
       <div class="w3-section">
-        <label>Name</label>
+        <label>Nome</label>
         <input class="w3-input w3-border" type="text" name="Name" required>
       </div>
       <div class="w3-section">
@@ -284,10 +233,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <input class="w3-input w3-border" type="text" name="Email" required>
       </div>
       <div class="w3-section">
-        <label>Message</label>
+        <label>Mensagem</label>
         <input class="w3-input w3-border" type="text" name="Message" required>
       </div>
-      <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+      <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Enviar</button>
     </form>
   </div>
 
@@ -297,7 +246,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-third">
       <h3>FOOTER</h3>
       <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+      <p>Feito por  <a href="http://andrecosta.info/unifacs/gamifica/usuarios/foto_perfil/512_20180808142933.jpeg"target="_blank">Amanda</a> e<a href="http://andrecosta.info/unifacs/gamifica/usuarios/foto_perfil/515_20180826200751.jpeg"target="_blank"> Levi</a> </p>
     </div>
   
     <div class="w3-third">
