@@ -35,6 +35,32 @@ if($registro){
 	
 $_SESSION["perfil_usuario"] = $registro["perfil"];
 $perfil = $registro["perfil"];
+
+} else{
+    $perfil = ""; // poderia criar o perfil aqui logo
+}
+
+
+
+$sql1 = "SELECT *
+		FROM cadastro 
+		WHERE id = '$id'";
+
+// Executa SQl no DB
+$retorno1 = $con->query($sql1);
+
+// Deu erro?
+if ($retorno1 == false){ 
+	echo $con->error; 
+}
+
+$registro1 = $retorno1->fetch_array();
+
+if($registro1){
+	
+$foto = $registro1["foto"];
+$_SESSION["foto_usuario"] = $registro1["foto"];
+
 } else{
     $perfil = ""; // poderia criar o perfil aqui logo
 }
@@ -61,7 +87,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
-    <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" style="width:80%;" class="w3-round"><br><br>
+    <img src= <?php echo $foto ?> style="width:80%;" class="w3-round"><br><br>
 	<h4><b><?php echo $nome ?></b></h4>
 	<a  style='font-size:24px' class='far' href="editarperfil.php" >Editar Perfil<i class='far fa-edit'></i></a>
     <!--<p class="w3-text-grey">Template by W3.CSS</p>-->
