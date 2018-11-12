@@ -187,7 +187,7 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 	<!-- <input type="file" name="foto" id="fileToUpload"> -->
 	
 	</table>
-	<a class="btn btn-light" href="post.php">Cancelar</a>
-	<input type="submit" value="Salvar">
+		  <a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Cancelar</a>
+  <button class="w3-button w3-green w3-border w3-border-Blue w3-round-large">Salvar</button>
 </form>
 </div>
