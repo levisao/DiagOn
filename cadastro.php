@@ -1,4 +1,5 @@
 
+	
 	<?php
 	include_once "topo.php"; 
 
@@ -24,7 +25,8 @@
     $email = $_POST["email"];
     $login = $_POST["login"];
 	$senha = $_POST["senha"];
-
+	$foto = "http://www.amigoviajante.com.br/img/usuario-sem-foto.png";
+	$_SESSION["foto_usuario"] = $foto;
     // Valida campos obrigatórios
     if ($login == "" || $senha == "") {
 
@@ -39,8 +41,10 @@
 									nome, 
 									email, 
 									login,
-									senha)
-              VALUES ( ?,?,?,?)";
+									senha,
+									foto
+									)
+              VALUES ( ?,?,?,?,?)";
 
       // Prepara query
       $preparacao = $con->prepare($sql);
@@ -49,11 +53,12 @@
       if ($preparacao) {
 
         // Passa os parâmetros para a query
-        $preparacao->bind_param("ssss",
+        $preparacao->bind_param("sssss",
 								$nome, 
 								$email, 
 								$login,
-								md5($senha));
+								md5($senha),
+								$foto);
 
         // Executa query no BD
         $retorno = $preparacao->execute();
@@ -114,3 +119,4 @@
 
 	</body>
 </html>
+
