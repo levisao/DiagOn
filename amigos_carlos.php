@@ -10,26 +10,26 @@
 	// Está logado?     - adicionado para o index
 	if($_SESSION["logado"] == NULL){
 		
-		header("Location: ../index.php");
+		header("Location: login.php");
 		
 	}
 			
     // conecta ao BD
-    include_once "../bd.php";
+    include_once "bd.php";
 
-    if ($_GET["status"] == 1) {
+    /*if ($_GET["status"] == 1) {
         $filtro = "WHERE status = 'Aberto'";
     } else if ($_GET["status"] == 2) {
         $filtro = "WHERE status = 'Em Andamento'";
     } else if ($_GET["status"] == 3) {
         $filtro = "WHERE status = 'Fechado'";
     }
+*/
 
     // Cria comando SQL
-    $sql = "SELECT *, DATE_FORMAT(data_chamado, '%d/%m/%Y') AS data_chamado
-            FROM chamado 
-            $filtro
-            ORDER BY id DESC";
+    $sql = "SELECT *
+            FROM cadastro 
+            ORDER BY nome ";
 
     // Executa a query no BD
     $retorno = $con->query($sql);
@@ -39,14 +39,14 @@
         echo $con->error;
     }
 
-    include_once "../topo.php";
+    include_once "topo.php";
 ?>
 
 <h1>Seus Amigos</h1>
 
 <br>
 
-
+<!--
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link <?php if ($_GET["status"] == null) echo "active";?>" href="listar.php">Todos</a>
@@ -61,14 +61,14 @@
     <a class="nav-link <?php if ($_GET["status"] == 3) echo "active";?>" href="listar.php?status=3">Fechado</a>
   </li>
 </ul>
-
+-->
 <br>
-<a class="btn btn-danger" href="../sair.php">Logoff</a>
+<a class="btn btn-danger" href="post.php">Cancelar</a>
 <a class="btn btn-success" href="cadastrar.php">Abrir Chamado</a>
 <br>
 <br>
 
-<table class="table table-bordered table-striped">
+<table >
 	<tr>
 		<th>ID</th>
 		<th>Data</th>
@@ -82,10 +82,12 @@
 
     	// obtem campos do registro
     	$id = $registro["id"];
-    	$data_chamado = $registro["data_chamado"];
-    	$solicitante = $registro["solicitante"];
-    	$status = $registro["status"];
+    	$nome = $registro["nome"];
+    	$login = $registro["login"];
+    	$email = $registro["email"];
 
+		
+		/*
         // CSS do Status
     	if ( $status == "Aberto" ) {
     		$css_status = "background-color:#F0F8FF;";
@@ -94,22 +96,25 @@
     	} else if ( $status == "Fechado" ) {
     		$css_status = "background-color:green;";
     	}
+*/
+
 
     	// imprime linha em HTML
     	echo "<tr>
 				<td>$id</td>
-				<td>$data_chamado</td>
-				<td>$solicitante</td>
-				<td style='$css_status'>$status</td>
-                <td><a class='btn btn-info' href='ver.php?id=$id'><i class='far fa-eye'></i></a></td>
-                <td><a class='btn btn-warning' href='editar.php?id=$id'><i class='far fa-edit'></i></a></td>
-                <td><a onclick=\"return confirm('Deseja Apagar?');\" class='btn btn-danger' href='apagar.php?id=$id'><i class='far fa-trash-alt'></i></a></td>
+				<td>$nome</td>
+				<td>$login</td>
+				<td style='$css_status'>$email</td>
+                <td><a class='btn btn-info' href='post.php><i class='far fa-eye'></i></a></td>
+                <td><a class='btn btn-warning' href='post.php><i class='far fa-edit'></i></a></td>   
+                <td><a onclick=\"return confirm('Deseja Apagar?');\" class='btn btn-danger' href='logoff.php><i class='far fa-trash-alt'></i></a></td>
 			</tr>";
     }
-
+// href='post.php?id=$id'
 
 ?>
 	
 </table>
 
-<?php include_once "../rodape.php"; ?>
+</body>
+</html>
