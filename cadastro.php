@@ -27,6 +27,11 @@
 	$senha = $_POST["senha"];
 	$foto = "http://www.amigoviajante.com.br/img/usuario-sem-foto.png";
 	$_SESSION["foto_usuario"] = $foto;
+	
+	$_SESSION["login_cadastro"] = $login;
+	$_SESSION["senha_cadastro"] = md5($senha);
+	
+	
     // Valida campos obrigatórios
     if ($login == "" || $senha == "") {
 
@@ -62,13 +67,19 @@
 
         // Executa query no BD
         $retorno = $preparacao->execute();
+		
+	
 
         // Salvou no BD?
         if ($retorno) {
+		
+		
+		
+		
 
           echo "<script> 
                   alert('Cadastrado com Sucesso!');
-                  location.href = 'login.php';
+                  location.href = 'add_table_amigo_usuario.php';
                 </script>";
 
         // Deu erro..

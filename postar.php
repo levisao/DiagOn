@@ -9,11 +9,12 @@
   // Inicia a sessão
   session_start();
 
- /* Está logado?
+  //Está logado?
   if ($_SESSION["logado"] == NULL) {
-      header("Location: ../index.php");
-  }*/
-
+      header("Location: login.php");
+  }
+	
+	$id = $_SESSION["id_usuario"];
   // Clicou em salvar?
   if ($_POST != NULL) {
 
@@ -38,9 +39,11 @@
       $sql = "INSERT INTO postagem (
 									titulo, 
 									texto, 
-									foto
+									foto,
+									data,
+									id_usuario
 									)
-              VALUES ( ?,?,?)";
+              VALUES ( ?,?,?,?,?)";
 
       // Prepara query
       $preparacao = $con->prepare($sql);
@@ -49,10 +52,12 @@
       if ($preparacao) {
 
         // Passa os parâmetros para a query
-        $preparacao->bind_param("sss",
+        $preparacao->bind_param("ssssi",
 								$titulo, 
 								$texto,
-								$foto);
+								$foto,
+								date("Y-m-d H:i:s"),
+								$id);
 
         // Executa query no BD
         $retorno = $preparacao->execute();

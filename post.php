@@ -132,7 +132,96 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
   </header>
   
+  
+  <?php
+	
+	
+	$sql2 = "SELECT *, DATEDIFF(data, date('Y-m-d H:i:s')) AS d
+		FROM postagem 
+		ORDER BY d asc";
+		
+		$retorno3 = $con->query($sql2);
+
+		// Deu erro?
+		if ($retorno3 == false){ 
+			echo $con->error; 
+	
+		}
+		$cont = 1;
+		
+		echo "<div class='w3-row-padding'>";
+		
+		while ($registro3 = $retorno3->fetch_array()){ 
+			
+
+		if($cont <= 8){
+			
+			
+    	// obtem campos do registro
+    	
+		
+    	$titulo_postagem = $registro3["titulo"];
+    	$texto_postagem = $registro3["texto"];
+		$foto_postagem = $registro3["foto"];
+		$data_postagem = $registro3["data"];
+		$id_usuario_postagem = $registro3["id_usuario"];
+		
+			$sql4 = "SELECT *
+		FROM cadastro 
+		WHERE id = '$id_usuario_postagem'";
+
+		// Executa SQl no DB
+		$retorno4 = $con->query($sql4);
+
+		// Deu erro?
+		if ($retorno4 == false){ 
+			echo $con->error; 
+		}
+
+		$registro4 = $retorno4->fetch_array();
+		
+		$nome_usuario_postagem = $registro4["nome"];
+		
+
+			$sql5 = "SELECT *
+		FROM amigo 
+		WHERE id_usuario_1 = '$id' AND id_usuario_2 = '$id_usuario_postagem'";
+
+		// Executa SQl no DB
+		$retorno5 = $con->query($sql5);
+
+		// Deu erro?
+		if ($retorno5 == false){ 
+			echo $con->error; 
+		}
+		
+		$registro5 = $retorno5->fetch_array();
+
+		$status = $registro5["status"];
+		
+		if($registro5 && $status == 1){
+    	// imprime linha em HTML
+    	echo "    
+					<div class='w3-third w3-container w3-margin-bottom'>
+				  <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
+				  <div class='w3-container w3-white'>
+				  <p><b>$nome_usuario_postagem</b></p>
+					<p><b>$titulo_postagem</b></p>
+					<p>$texto_postagem</p>
+				  </div>
+				</div>";
+			
+		$cont = $cont + 1;
+		}		
+		}
+		} 
+	    
+		echo "</div>";
+  
+  ?>
+  
   <!-- First Photo Grid-->
+  <!--
   <div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom">
       <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
@@ -156,8 +245,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </div>
     </div>
   </div>
+  -->
   
   <!-- Second Photo Grid-->
+  <!--
   <div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom">
       <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
@@ -181,7 +272,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </div>
     </div>
   </div>
-
+-->
   <!-- Pagination -->
   <div class="w3-center w3-padding-32">
     <div class="w3-bar">

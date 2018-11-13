@@ -9,6 +9,8 @@ error_reporting(1);
 // Inicia a sessão
 session_start();
 
+$id_usuario = $_SESSION["id_usuario"];
+
 // Está logado?
 if ($_SESSION["logado"] == NULL) {
   header("Location: login.php");
@@ -35,6 +37,8 @@ if ($retorno == false){
 	echo $con->error; 
 	
 }
+
+
 	
 	
 
@@ -63,13 +67,45 @@ if ($_POST != NULL) {
     	
     	$nome = $registro["nome"];
     	$foto = $registro["foto"];
-    
+		$id_pessoa = $registro["id"];
+		
+		
+		$sql1 = "SELECT *
+		FROM amigo 
+		WHERE id_usuario_1 = '$id_usuario' AND id_usuario_2 = '$id_pessoa' OR id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario'";
 
+			// Executa SQl no DB
+			$retorno1 = $con->query($sql1);
+
+			// Deu erro?
+			if ($retorno1 == false){ 
+				echo $con->error; 
+				
+			}
+
+         $registro1 = $retorno1->fetch_array();
+		 
+		 $status = $registro1["status"];
 		
     	// imprime linha em HTML
     	echo "<tr>
 			<td>$nome</td>
 				<td><img src='$foto'></td>
+				<td><a href = 'perfil_pessoa.php'>Ver Perfil</a></td>
+				<td>";
+				
+				if($registro1){
+					if($status == 1){
+				echo "<a href='deixar_seguir.php?id_pessoa=$id_pessoa'>Deixar de seguir";
+					}else{
+						echo "<a href='retirar_solicitacao.php?id_pessoa=$id_pessoa'>Retirar Solicitação";
+					}
+				}else{
+					
+				echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa'>Adicionar";
+				}
+				
+				echo "</a></td>
 				
 			</tr>";
 	}
