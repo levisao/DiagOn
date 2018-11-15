@@ -89,6 +89,7 @@
     	$email = $registro["email"];
 		$foto = $registro["foto"];
 
+
 		
 		/*
         // CSS do Status
@@ -130,7 +131,7 @@
     	echo "<tr>
 				<td>$nome</td>
 				<td><img src='$foto'></td>
-                <td><a  href='post.php'>Visualizar Perfil</a></td>
+                <td><a  href='perfil_amigo.php'>Visualizar Perfil</a></td>
                 <td><a class='btn btn-warning' href='post.php'>Deixar de Seguir</a></td>   
                 <td><a onclick=\"return confirm('Deseja Apagar?');\" class='btn btn-danger' href='logoff.php'>Sair</a></td>
 			</tr>";
@@ -199,8 +200,8 @@ $sql4 = "SELECT *
 echo"	<tr>
 			<td>$nome_soli</td>
 			<td><img src='$foto_soli'></td>
-			<td><a href= 'post.php'>Aceitar</a></td>
-			<td><a href= 'post.php'>Declinar</a></td>
+			<td><a href= 'aceitar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'>Aceitar</a></td>
+			<td><a href= 'declinar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'>Declinar</a></td>
 		</tr>";
 		 }
 		 }

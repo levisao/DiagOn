@@ -72,7 +72,9 @@ if ($_POST != NULL) {
 		
 		$sql1 = "SELECT *
 		FROM amigo 
-		WHERE id_usuario_1 = '$id_usuario' AND id_usuario_2 = '$id_pessoa' OR id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario'";
+		WHERE id_usuario_1 = '$id_usuario' AND id_usuario_2 = '$id_pessoa' 
+		OR 
+		id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario'";
 
 			// Executa SQl no DB
 			$retorno1 = $con->query($sql1);
@@ -95,23 +97,34 @@ if ($_POST != NULL) {
 				<td>";
 				
 				if($registro1){
+
+
 					if($status == 1){
 				echo "<a href='deixar_seguir.php?id_pessoa=$id_pessoa'>Deixar de seguir";
 					}else{
-						echo "<a href='retirar_solicitacao.php?id_pessoa=$id_pessoa'>Retirar Solicitação";
-					}
+						if($status == 0){
+						echo "<a href='retirar_solicitacao.php?id_pessoa=$id_pessoa'>Retirar Solicitação";	
+										
 				}else{
+					if($status == 3){
 					
-				echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa'>Adicionar";
+				echo "<a href='post.php?id_pessoa=$id_pessoa'>Voltar para Perfil";
 				}
+			}
+			}
+		}else{
+			echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa'>Adicionar";
+		}
 				
 				echo "</a></td>
 				
 			</tr>";
-	}
-	    	echo "</table>";
-			
+	
 }
+
+	    	echo "</table>";
+	}		
+
 ?>
 
 </body>

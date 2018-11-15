@@ -32,7 +32,7 @@ $senha = $_SESSION["senha_cadastro"];
 		// Guarda variáveis na sessão
 		
 		$id = $registro3["id"];
-		$status = 1;
+		$status = 3;
 		$data_convite = "";
 	}
 		

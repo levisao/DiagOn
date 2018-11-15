@@ -136,9 +136,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <?php
 	
 	
-	$sql2 = "SELECT *, DATEDIFF(data, date('Y-m-d H:i:s')) AS d
+	$sql2 = "SELECT *
 		FROM postagem 
-		ORDER BY d asc";
+		ORDER BY data asc";
 		
 		$retorno3 = $con->query($sql2);
 
@@ -185,7 +185,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 			$sql5 = "SELECT *
 		FROM amigo 
-		WHERE id_usuario_1 = '$id' AND id_usuario_2 = '$id_usuario_postagem'";
+		WHERE id_usuario_1 = '$id' AND id_usuario_2 = '$id_usuario_postagem' 
+    OR 
+    id_usuario_1 = '$id_usuario_postagem' AND id_usuario_2 = '$id'";
 
 		// Executa SQl no DB
 		$retorno5 = $con->query($sql5);
@@ -205,14 +207,37 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 					<div class='w3-third w3-container w3-margin-bottom'>
 				  <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
 				  <div class='w3-container w3-white'>
-				  <p><b>$nome_usuario_postagem</b></p>
+				  <p><b><a href = 'perfil_amigo.php'>$nome_usuario_postagem</a></b></p>
 					<p><b>$titulo_postagem</b></p>
 					<p>$texto_postagem</p>
-				  </div>
+          <br>
+          <a href = 'curtir_postagem.php'> curtir</a>
+          <a href = 'comentar_postagem.php'> comentar</a>
+          </div>
 				</div>";
 			
 		$cont = $cont + 1;
-		}		
+		}
+    if($registro && $status == 3)	{
+            // imprime linha em HTML
+      echo "    
+          <div class='w3-third w3-container w3-margin-bottom'>
+          <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
+          <div class='w3-container w3-white'>
+          <p><b><a href = 'perfil_amigo.php'>$nome_usuario_postagem</a></b></p>
+          <p><b>$titulo_postagem</b></p>
+          <p>$texto_postagem</p>
+          <br>
+          <a href = 'curtir_postagem.php'> curtir</a>
+          <a href = 'comentar_postagem.php'> comentar</a>
+          <a href = 'excluir_postagem.php'> excluir</a>
+          <a href = 'editar_postagem.php'> editar</a>
+          
+          </div>
+        </div>";
+
+    $cont = $cont + 1;
+    }	
 		}
 		} 
 	    

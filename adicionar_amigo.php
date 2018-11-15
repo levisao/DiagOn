@@ -1,6 +1,4 @@
 <?php
-//include_once "topo.php";
-echo "id = ".$_GET["id_pessoa"];
 
 session_start();
 
