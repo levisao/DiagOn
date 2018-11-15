@@ -107,7 +107,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>-->
     <br><br><a  style='font-size:24px' class='far' href="amigos.php" ><i class='fas fa-user-friends'></i></a> Amigos
 	<br><br><a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar
-  <br><br><a  style='font-size:24px' class='far' href="login.php" ><i class='fas fa-power-off'></i></a> Sair
+  <br><br><a  style='font-size:24px' class='far' href="logoff.php" ><i class='fas fa-power-off'></i></a> Sair
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -138,7 +138,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 	
 	$sql2 = "SELECT *
 		FROM postagem 
-		ORDER BY data asc";
+		ORDER BY data desc";
 		
 		$retorno3 = $con->query($sql2);
 
@@ -181,6 +181,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		$registro4 = $retorno4->fetch_array();
 		
 		$nome_usuario_postagem = $registro4["nome"];
+    $foto_usuario_postagem = $registro4["foto"];
+
 		
 
 			$sql5 = "SELECT *
@@ -196,7 +198,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		if ($retorno5 == false){ 
 			echo $con->error; 
 		}
-		
+
+
 		$registro5 = $retorno5->fetch_array();
 
 		$status = $registro5["status"];
@@ -207,9 +210,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 					<div class='w3-third w3-container w3-margin-bottom'>
 				  <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
 				  <div class='w3-container w3-white'>
-				  <p><b><a href = 'perfil_amigo.php'>$nome_usuario_postagem</a></b></p>
+				  <p><b><a href = 'perfil_pessoa.php?id_pessoa=$id_usuario_postagem&foto_pessoa=$foto_usuario_postagem&nome_pessoa=$nome_usuario_postagem'>$nome_usuario_postagem</a></b></p>
 					<p><b>$titulo_postagem</b></p>
 					<p>$texto_postagem</p>
+          
+          <p>$data_postagem</p>
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
           <a href = 'comentar_postagem.php'> comentar</a>
@@ -218,15 +223,17 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 			
 		$cont = $cont + 1;
 		}
-    if($registro && $status == 3)	{
+    if($registro5 && $status == 3)	{
             // imprime linha em HTML
       echo "    
           <div class='w3-third w3-container w3-margin-bottom'>
           <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
           <div class='w3-container w3-white'>
-          <p><b><a href = 'perfil_amigo.php'>$nome_usuario_postagem</a></b></p>
+          <p><b><a href = 'perfil_pessoa.php?id_pessoa=$id_usuario_postagem&foto_pessoa=$foto_usuario_postagem&nome_pessoa=$nome_usuario_postagem'>$nome_usuario_postagem</a></b></p>
           <p><b>$titulo_postagem</b></p>
           <p>$texto_postagem</p>
+          
+          <p>$data_postagem</p>
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
           <a href = 'comentar_postagem.php'> comentar</a>
@@ -321,7 +328,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
 
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-    <h4><b>About me</b></h4>
+    <h4><b>Sobre mim</b></h4>
      <?php echo $perfil; ?>
     <hr>
     

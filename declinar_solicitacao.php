@@ -30,8 +30,8 @@
 	    // Passa os parâmetros para a query
 	    $preparacao->bind_param("iii", 
 	                          	$status,
-								$id_pessoa,
-	                          	$id_usuario);
+								$id_usuario,
+	                          	$id_pessoa);
 
 	    // Executa query no BD
 	    $retorno = $preparacao->execute();

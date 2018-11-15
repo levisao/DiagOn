@@ -20,14 +20,6 @@
     // conecta ao BD
     include_once "bd.php";
 
-    /*if ($_GET["status"] == 1) {
-        $filtro = "WHERE status = 'Aberto'";
-    } else if ($_GET["status"] == 2) {
-        $filtro = "WHERE status = 'Em Andamento'";
-    } else if ($_GET["status"] == 3) {
-        $filtro = "WHERE status = 'Fechado'";
-    }
-*/
 
     // Cria comando SQL
     $sql = "SELECT *
@@ -131,7 +123,7 @@
     	echo "<tr>
 				<td>$nome</td>
 				<td><img src='$foto'></td>
-                <td><a  href='perfil_amigo.php'>Visualizar Perfil</a></td>
+                <td><a  href='perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'>Visualizar Perfil</a></td>
                 <td><a class='btn btn-warning' href='post.php'>Deixar de Seguir</a></td>   
                 <td><a onclick=\"return confirm('Deseja Apagar?');\" class='btn btn-danger' href='logoff.php'>Sair</a></td>
 			</tr>";
