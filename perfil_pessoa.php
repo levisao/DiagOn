@@ -17,6 +17,7 @@ $foto_pessoa = $_GET["foto_pessoa"];
 
 $id_pessoa = $_GET["id_pessoa"];
 
+
 // Conecta ao DB
 include_once "bd.php";
 
@@ -92,17 +93,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </a>
     <img src= <?php echo $foto_pessoa ?> style="width:80%;" class="w3-round"><br><br>
 	<h4><b><?php echo $nome_pessoa ?></b></h4>
-	<a  style='font-size:24px' class='far' href="editarperfil.php" ><i class='far fa-edit'></i></a> Editar<br><br>
-	<a  style='font-size:24px' class='far' href="postar.php" ><i class='fas fa-plus'></i></a> Postar
+	
   
 
 
 
 
 
-
-
-    <br><br><a  style='font-size:24px' class='far' href="amigos.php" ><i class='fas fa-user-friends'></i></a> Amigos
+<?php
+echo"
+    <a  style='font-size:24px' class='far' href='amigos_pessoa.php?id_pessoa=$id_pessoa&nome_pessoa=$nome_pessoa&foto_pessoa=$foto_pessoa'><i class='fas fa-user-friends'></i></a> Amigos
+    ";
+    ?>
 	<br><br><a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar
   <br><br><a  style='font-size:24px' class='far' href="post.php" ><i class='fas fa-power-off'></i></a> Voltar 
 </nav>

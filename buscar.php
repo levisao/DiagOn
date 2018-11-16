@@ -93,7 +93,7 @@ if ($_POST != NULL) {
     	echo "<tr>
 			<td>$nome</td>
 				<td><img src='$foto'></td>
-				<td><a href = 'perfil_pessoa.php'>Ver Perfil</a></td>
+				<td><a href = 'perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'>Ver Perfil</a></td>
 				<td>";
 				
 				if($registro1){
