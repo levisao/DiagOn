@@ -21,6 +21,7 @@ $texto_postagem = $_GET["texto_postagem"];
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+
 <div class="container">
 	<?php
 	echo "
@@ -37,6 +38,15 @@ $texto_postagem = $_GET["texto_postagem"];
 ";
     	?>
       <h2 class="page-header">Comentários</h2>
+
+
+<form method="POST">
+
+	<textarea name="comentario"></textarea>
+	<input type="submit" name="comentar" value="Comentar">
+</form>
+
+
         <section class="comment-list">
           <!-- First Comment -->
           <article class="row">
