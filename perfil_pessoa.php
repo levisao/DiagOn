@@ -231,7 +231,7 @@ echo"
           
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
-          <a href = 'comentar_postagem.php'> comentar</a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem'> comentar</a>
           </div>
 				</div>";
 			

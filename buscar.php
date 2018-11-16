@@ -53,6 +53,8 @@ if ($retorno == false){
 <div align="center" > 
 <input type="text" name="nome" maxlength="100">
 <input type="submit" class="w3-button w3-green w3-border w3-border-Blue w3-round-large" value="Buscar">
+<br>
+<a href = "post.php">Voltar</a>
 </div>
 </form>
 

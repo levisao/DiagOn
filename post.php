@@ -217,7 +217,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <p>$data_postagem</p>
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
-          <a href = 'comentar_postagem.php'> comentar</a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem'> comentar</a>
           </div>
 				</div>";
 			
@@ -236,7 +236,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <p>$data_postagem</p>
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
-          <a href = 'comentar_postagem.php'> comentar</a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem'> comentar</a>
           <a href = 'excluir_postagem.php'> excluir</a>
           <a href = 'editar_postagem.php'> editar</a>
           
