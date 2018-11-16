@@ -171,7 +171,7 @@ $sql4 = "SELECT *
 
 			$sql3 = "SELECT *
 		FROM amigo 
-		WHERE id_usuario_1 = '$id_usuario' AND id_usuario_2 = '$id_pessoa' AND status = 0 OR id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario' AND status = 0";
+		WHERE id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario' AND status = 0";
 
 			// Executa SQl no DB
 			$retorno3 = $con->query($sql3);

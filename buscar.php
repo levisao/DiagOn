@@ -109,6 +109,10 @@ if ($_POST != NULL) {
 					if($status == 3){
 					
 				echo "<a href='post.php?id_pessoa=$id_pessoa'>Voltar para Perfil";
+				}else{
+					if($status == 2){
+					echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa'>Adicionar";
+					}
 				}
 			}
 			}

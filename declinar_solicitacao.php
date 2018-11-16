@@ -30,8 +30,8 @@
 	    // Passa os parâmetros para a query
 	    $preparacao->bind_param("iii", 
 	                          	$status,
-								$id_usuario,
-	                          	$id_pessoa);
+								$id_pessoa,
+	                          	$id_usuario);
 
 	    // Executa query no BD
 	    $retorno = $preparacao->execute();
@@ -48,7 +48,7 @@
 	    // Deu erro..
 	    } else {
 
-	      echo $preparacao1->error;
+	      echo $preparacao->error;
 
 	    }
 	}

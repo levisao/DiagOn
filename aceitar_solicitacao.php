@@ -47,7 +47,7 @@
 	    // Deu erro..
 	    } else {
 
-	      echo $preparacao1->error;
+	      echo $preparacao->error;
 
 	    }
 	}
