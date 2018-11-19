@@ -150,7 +150,7 @@ echo"
 	
 	$id_pessoa = $_GET["id_pessoa"];
 
-	$sql2 = "SELECT *
+	$sql2 = "SELECT *, DATE_FORMAT(data,'%d/%m/%Y %H:%i') as data_p
 		FROM postagem 
     WHERE id_usuario = $id_pessoa
 		ORDER BY data desc";
@@ -184,7 +184,7 @@ echo"
     	$titulo_postagem = $registro3["titulo"];
     	$texto_postagem = $registro3["texto"];
 		$foto_postagem = $registro3["foto"];
-		$data_postagem = $registro3["data"];
+		$data_postagem = $registro3["data_p"];
 		$id_usuario_postagem = $registro3["id_usuario"];
 		
 			$sql4 = "SELECT *

@@ -66,7 +66,6 @@ $sql = "INSERT INTO curtir (
 		
 
           echo "<script> 
-                  alert('Curtido!');
                   location.href = 'post.php';
                 </script>";
 
