@@ -176,7 +176,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     	// imprime linha em HTML
     	echo "    
 					<div class='w3-third w3-container w3-margin-bottom'>
-				  <img src='$foto_postagem' alt='Norway' style='width:100% ' class='w3-hover-opacity'>
+				  <img  width='200px' height='200px' src='$foto_postagem' alt='Norway' style='width:100% ' class='w3-hover-opacity'>
 				  <div class='w3-container w3-white'>
 				  <p><b><a href = 'perfil_pessoa.php?id_pessoa=$id_usuario_postagem&foto_pessoa=$foto_usuario_postagem&nome_pessoa=$nome_usuario_postagem'>$nome_usuario_postagem</a></b></p>
 					<p><b>$titulo_postagem</b></p>

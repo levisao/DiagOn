@@ -100,14 +100,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 
 
+<a  style='font-size:24px' class='far' href="post.php" ><i class='fas fa-home'></i></a> Início <br><br>
 <?php
 echo"
-    <a  style='font-size:24px' class='far' href='amigos_pessoa.php?id_pessoa=$id_pessoa&nome_pessoa=$nome_pessoa&foto_pessoa=$foto_pessoa'><i class='fas fa-user-friends'></i></a> Amigos
+    
+    <a  style='font-size:24px' class='far' href='amigos_pessoa.php?id_pessoa=$id_pessoa&nome_pessoa=$nome_pessoa&foto_pessoa=$foto_pessoa'><i class='fas fa-user-friends'></i></a> Amigos<br><br>
     ";
     ?>
-	<br><br><a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar
-  <br><br><a  style='font-size:24px' class='far' href="post.php" ><i class="fas fa-home"></i></a> Voltar 
-</nav> 
+
+  <a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar<br><br>
+    <a  style='font-size:24px' class='far' href="logoff.php" ><i class='fas fa-power-off'></i></a> Sair
+</nav>
+
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>

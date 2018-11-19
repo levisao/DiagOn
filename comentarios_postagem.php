@@ -96,6 +96,7 @@ if ($_POST != NULL) {
 
 
 }
+include_once "topo_1.php";
 ?>
 
 
@@ -237,7 +238,7 @@ WHERE c.id_postagem = '$id_postagem' ORDER BY c.data ASC";
     </div>
   </div>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php" >Voltar</a>
 
 
 

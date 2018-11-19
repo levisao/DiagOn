@@ -3,7 +3,7 @@
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
       <i class="fa fa-remove"></i>
     </a>
-    <img src= <?php echo $foto ?> style="width:80%;" class="w3-round"><br><br>
+    <img width='200px' height='200px' src= <?php echo $foto ?> style="width:80%;" class="w3-round"><br><br>
 	<h4><b><?php echo $nome ?></b></h4>
 	<!--<a  style='font-size:24px' class='far' href="post.php" ><i class='fas fa-home'></i></a> Início <br><br>-->
 	<a  style='font-size:24px' class='far' href="editarperfil.php" ><i class='far fa-edit'></i></a> Editar<br><br>

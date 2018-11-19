@@ -10,7 +10,7 @@
 		body{
 			 background-image: url("https://solucoesitapoasite.files.wordpress.com/2016/05/bg-azul-claro-degrade.jpg");
 			 background-size: auto;
-			 background-repeat: no-repeat;
+			 background-repeat: repeat;
 			 background-size: 100% 100%;
 			 
 			}

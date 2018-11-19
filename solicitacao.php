@@ -34,7 +34,7 @@
         echo $con->error;
     }
 
-    include_once "topo.php";
+    include_once "topo_1.php";
 ?>
 <h1 style = "text-align:center">Solicitações de Amizade</h1>
 <div style = "text-align:center">
@@ -105,6 +105,5 @@ echo"	<tr>
 <br>
 <br>
 </div>
-<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>

@@ -1,6 +1,6 @@
 <?php 
 
-include_once "topo.php";
+include_once "topo_1.php";
 
 // Não exibe msg de notificação
 error_reporting(1);
@@ -53,7 +53,7 @@ if ($retorno == false){
 <div align="center" > 
 <input type="text" name="nome" maxlength="100">
 <input type="submit" class="w3-button w3-green w3-border w3-border-Blue w3-round-large" value="Buscar">
-<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php" >Voltar</a>
+
 <br>
 
 <div id="busca">
@@ -136,6 +136,7 @@ if ($_POST != NULL) {
 
 ?>
 </div></div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php" >Voltar</a>
 </body>
 </html>

@@ -34,14 +34,14 @@
         echo $con->error;
     }
 
-    include_once "topo.php";
+    include_once "topo_1.php";
 ?>
 
 <h1 style = "text-align:center">Seus Amigos</h1>
 
 <div >    
 
-<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
+
 </div>
 <br>
 <br>
@@ -52,7 +52,7 @@
 
 
 
-<div id="amigos" style = background-color:lightblue>
+<div id="amigos" >
 <br>
 
 
@@ -99,7 +99,7 @@
     	// imprime linha em HTML
     	echo "<tr>
 				<td>$nome</td>
-				<td><img style = 'width:220px; height:auto' src='$foto'></td>
+				<td><img width='200px' height='200px'  src='$foto'></td>
                 <td><a  style='font-size:24px' class='far fa-eye'href='perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'></a></td>
                <td><a onclick=\"return confirm('Deseja desfazer amizade?');\" style='font-size:24px' class='fas fa-user-alt-slash' href='post.php'></a></td>
 			</tr> <br>";
@@ -114,8 +114,8 @@
 
 
 	
-</div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div></div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
 
 
 </body>

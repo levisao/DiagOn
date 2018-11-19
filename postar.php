@@ -27,10 +27,10 @@
     $foto = $_POST["foto"];
 	    // Valida campos obrigatórios
 
-    if ($texto == "") {
+    if ($texto == "" || $foto == "") {
 
         echo "<script> 
-                alert('Precisa ao menos escrever algo!');
+                alert('Precisa ao menos escrever algo! E poste uma foto.');
               </script>";
 
     } else {
