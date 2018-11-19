@@ -1,16 +1,102 @@
 <?php
-include_once "topo_comentarios_postagem.php";
 
+
+session_start();
+
+// Está logado?
+  if ($_SESSION["logado"] == NULL) {
+      header("Location: login.php");
+  }
+  
+include_once "topo_comentarios_postagem.php";
 
 
 $foto_postagem = $_GET["foto_postagem"];
 $titulo_postagem = $_GET["titulo_postagem"];
 $texto_postagem = $_GET["texto_postagem"];
 
+$id_usuario = $_SESSION["id_usuario"];
+$id_postagem = $_GET["id_postagem"];
+$id_usuario_postagem = $_GET["id_pessoa"];
+
+include_once "bd.php";
+
+
+if ($_POST != NULL) {
+	
+	$comentario = $_POST["comentario"];
+	
+    if ($comentario == "") {
+
+        echo "<script> 
+                alert('Preencha corretamente!');
+              </script>";
+
+    } else {
+
+      // Cria comando SQL
+      $sql = "INSERT INTO comentarios (
+									id_postagem, 
+									id_pessoa, 
+									comentario,
+									data
+									)
+              VALUES ( ?,?,?,?)";
+
+      // Prepara query
+      $preparacao = $con->prepare($sql);
+
+      // Deu erro?
+      if ($preparacao) {
+
+        // Passa os parâmetros para a query
+        $preparacao->bind_param("iiss",
+								$id_postagem, 
+								$id_usuario, 
+								$comentario,
+								date("Y-m-d H:i:s"));
+
+        // Executa query no BD
+        $retorno = $preparacao->execute();
+		
+	
+
+        // Salvou no BD?
+        if ($retorno) {
+		
+		
+		
+		
+
+          echo "<script> 
+                  alert('Comentado com Sucesso!');
+                  location.href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario';
+                </script>";
+
+        // Deu erro..
+        } else {
+
+          echo "<script> 
+                  alert('Erro ao Comentar!');
+                </script>";
+
+          echo $preparacao->error;
+
+        }
+
+      // Erro na query
+      } else {
+        echo $con->error;
+      }
+
+    }
+
+
+
+
+
+}
 ?>
-
-
-
 
 
 
@@ -25,7 +111,7 @@ $texto_postagem = $_GET["texto_postagem"];
 <div class="container">
 	<?php
 	echo "
-	<img src = '$foto_postagem' width='750px'>
+	<img src = '$foto_postagem' style = 'width:750px; height:auto'>
 	";
 	
 	echo "
@@ -40,169 +126,116 @@ $texto_postagem = $_GET["texto_postagem"];
       <h2 class="page-header">Comentários</h2>
 
 
+<section class="comment-list">
 <form method="POST">
 
-	<textarea name="comentario"></textarea>
+	<textarea name="comentario" ></textarea>
+	<br>
 	<input type="submit" name="comentar" value="Comentar">
 </form>
 
+<?php
 
-        <section class="comment-list">
-          <!-- First Comment -->
-          <article class="row">
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
+$sql2 = "SELECT * FROM comentarios c INNER JOIN cadastro ca ON c.id_pessoa = ca.id 
+WHERE c.id_postagem = '$id_postagem' ORDER BY c.data ASC";
+
+// Executa SQl no DB
+			$retorno2 = $con->query($sql2);
+
+			// Deu erro?
+			if ($retorno2 == false){ 
+				echo $con->error; 
+				
+			}
+
+         while($registro2 = $retorno2->fetch_array()){
+		 
+		 $id_pessoa = $registro2["id_pessoa"];
+		 $nome_pessoa = $registro2["nome"];
+		 $foto_pessoa = $registro2["foto"];
+		 $comentario_pessoa = $registro2["comentario"];
+		 $data_comentario = $registro2["data"];
+		 
+			
+			if($registro2){
+			
+			if($id_usuario == $id_pessoa){
+			
+			//comentario do dono da postagem
+			echo "
+			<article class='row'>
+            <div class='col-md-10 col-sm-10'>
+              <div class='panel panel-default arrow right'>
+                <div class='panel-body'>
+                  <header class='text-right'>
+                    <time class='comment-date'><i class='fa fa-clock-o'></i> $data_comentario</time>
+                  </header>
+                  <div class ='text-right' class='comment-post'>
+                    <p>
+                      $comentario_pessoa</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='col-md-2 col-sm-2 hidden-xs'>
+              <figure class='thumbnail'>
+                <img class='img-responsive' src='$foto_pessoa' />
+                <figcaption class='text-center'>$nome_pessoa</figcaption>
               </figure>
             </div>
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow left">
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+          </article>
+			
+			
+			";
+			
+			
+			
+			}else{
+				// comentario de outra pessoa
+			echo "
+			
+			
+			
+			<article class='row'>
+            <div class='col-md-2 col-sm-2 hidden-xs'>
+              <figure class='thumbnail'>
+                <img class='img-responsive' src='$foto_pessoa' />
+                <figcaption class='text-center'>$nome_pessoa</figcaption>
+              </figure>
+            </div>
+            <div class='col-md-10 col-sm-10'>
+              <div class='panel panel-default arrow left'>
+                <div class='panel-body'>
+                  <header class='text-left'>
+                    <time class='comment-date'><i class='fa fa-clock-o'></i> $data_comentario </time>
                   </header>
-                  <div class="comment-post">
+                  <div class='comment-post'>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+                      $comentario_pessoa</p>
                   </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
                 </div>
               </div>
             </div>
           </article>
-          <!-- Second Comment Reply -->
-          <article class="row">
-            <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-            <div class="col-md-9 col-sm-9">
-              <div class="panel panel-default arrow left">
-                <div class="panel-heading right">Reply</div>
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <!-- Third Comment -->
-          <article class="row">
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow right">
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article>
-          <!-- Fourth Comment -->
-          <article class="row">
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-            <div class="col-md-10 col-sm-10 col-xs-12">
-              <div class="panel panel-default arrow left">
-                <div class="panel-body">
-                  <header class="text-left">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-          </article>
-          <!-- Fifth Comment -->
-          <article class="row">
-            <div class="col-md-10 col-sm-10">
-              <div class="panel panel-default arrow right">
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article>
-          <!-- Sixth Comment Reply -->
-          <article class="row">
-            <div class="col-md-9 col-sm-9 col-md-offset-1 col-md-pull-1 col-sm-offset-0">
-              <div class="panel panel-default arrow right">
-                <div class="panel-heading">Reply</div>
-                <div class="panel-body">
-                  <header class="text-right">
-                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
-                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
-                  </header>
-                  <div class="comment-post">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                  </div>
-                  <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 col-md-pull-1 hidden-xs">
-              <figure class="thumbnail">
-                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                <figcaption class="text-center">username</figcaption>
-              </figure>
-            </div>
-          </article>
-        </section>
+			
+			
+			
+			
+			
+			";
+			}
+			}
+			
+		 }
+			
+			
+
+?>
+       
+          </section>
     </div>
   </div>
+  <a href = "post.php">Voltar</a>
 </div>
 
 

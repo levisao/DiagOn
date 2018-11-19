@@ -36,37 +36,20 @@
 
     include_once "topo.php";
 ?>
-
-<h1>Seus Amigos</h1>
+<div id="bordar" style = "text-align:center"><h1>Seus Amigos</h1>
 
 <br>
 
-<!--
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == null) echo "active";?>" href="listar.php">Todos</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 1) echo "active";?>" href="listar.php?status=1">Aberto</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 2) echo "active";?>" href="listar.php?status=2">Em Andamento</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 3) echo "active";?>" href="listar.php?status=3">Fechado</a>
-  </li>
-</ul>
--->
-<br>
-<a  href="post.php">Voltar</a>
 
-<table border = 1>
-	<tr>
-		<th>Nome</th>
-		
-		<th>Foto</th>
-        <th style="text-align: center;" colspan="3">Ação</th>
-	</tr>
+<div style="text-align:center">    
+
+<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
+</div>
+
+<div id="amigos" style = background-color:lightblue>
+<br>
+
+
 <?php
 
 
@@ -83,18 +66,6 @@
 
 
 		
-		/*
-        // CSS do Status
-    	if ( $status == "Aberto" ) {
-    		$css_status = "background-color:#F0F8FF;";
-    	} else if ( $status == "Em Andamento" ) {
-    		$css_status = "background-color:orange;";
-    	} else if ( $status == "Fechado" ) {
-    		$css_status = "background-color:green;";
-    	}
-*/
-			
-			
 			
 			$sql2 = "SELECT *
 		FROM amigo 
@@ -122,84 +93,24 @@
     	// imprime linha em HTML
     	echo "<tr>
 				<td>$nome</td>
-				<td><img src='$foto'></td>
-                <td><a  href='perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'>Visualizar Perfil</a></td>
-                <td><a class='btn btn-warning' href='post.php'>Deixar de Seguir</a></td>   
-                <td><a onclick=\"return confirm('Deseja Apagar?');\" class='btn btn-danger' href='logoff.php'>Sair</a></td>
-			</tr>";
+				<td><img style = 'width:220px; height:auto' src='$foto'></td>
+                <td><a  style='font-size:24px' class='far fa-eye'href='perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'></a></td>
+               <td><a onclick=\"return confirm('Deseja desfazer amizade?');\" style='font-size:24px' class='fas fa-user-alt-slash' href='post.php'></a></td>
+			</tr> <br>";
 			}
+
     }
 // href='post.php?id=$id'
 
 ?>
 	
-</table>
-
-
-<br>
-<br>
-
-<h2>Solicitações de Amizade</h2>
-<table border = 1>
-
-
-<?php
-
-$sql4 = "SELECT *
-            FROM cadastro  ";
-
-    // Executa a query no BD
-    $retorno4 = $con->query($sql4);
-
-    // Deu erro no SQL?
-    if ($retorno4 == false) {
-        echo $con->error;
-    }
-
-
-    while ($registro4 = $retorno4->fetch_array()) {
-
-    	// obtem campos do registro
-    	$id_pessoa = $registro4["id"];
-			 
-		 $nome_soli = $registro4["nome"];
-		 $foto_soli = $registro4["foto"];
-    	
-		
-		
-
-
-			$sql3 = "SELECT *
-		FROM amigo 
-		WHERE id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario' AND status = 0";
-
-			// Executa SQl no DB
-			$retorno3 = $con->query($sql3);
-
-			// Deu erro?
-			if ($retorno3 == false){ 
-				echo $con->error; 
-				
-			}
-
-         $registro3 = $retorno3->fetch_array();
-		 
-		 if($registro3){
 
 
 
+	
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-echo"	<tr>
-			<td>$nome_soli</td>
-			<td><img src='$foto_soli'></td>
-			<td><a href= 'aceitar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'>Aceitar</a></td>
-			<td><a href= 'declinar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'>Declinar</a></td>
-		</tr>";
-		 }
-		 }
-	?>
-
-</table>
 
 </body>
 </html>

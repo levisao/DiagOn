@@ -174,13 +174,14 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 
 
 ?>
+
 <div id="cadastro">
 <h1>Editar perfil</h1>
 
 <form method="post">
 	<table class="table table-bordered">
 	Digite url da foto:
-	<textarea name="foto"></textarea> 
+	<textarea name="foto"></textarea> <br>	
 	Atualize seu perfil:
 	<textarea name="perfil"><?php echo $perfil;?></textarea>
 	

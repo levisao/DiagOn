@@ -95,7 +95,7 @@
 
 
 <div id="cadastro">
-<h1>Postagem no perfil</h1>
+<h1>Postagem</h1>
 
 <form method="post" class="w3-container">
 	<label>Título</label>

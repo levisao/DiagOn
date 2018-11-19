@@ -53,15 +53,16 @@ if ($retorno == false){
 <div align="center" > 
 <input type="text" name="nome" maxlength="100">
 <input type="submit" class="w3-button w3-green w3-border w3-border-Blue w3-round-large" value="Buscar">
+<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php" >Voltar</a>
 <br>
-<a href = "post.php">Voltar</a>
-</div>
+
+<div id="busca">
 </form>
 
 <?php
 if ($_POST != NULL) {
 
-	    	echo "<table border='1'>";
+	    	echo "<table>";
 	
 	while ($registro = $retorno->fetch_array()) {
 
@@ -94,32 +95,34 @@ if ($_POST != NULL) {
     	// imprime linha em HTML
     	echo "<tr>
 			<td>$nome</td>
-				<td><img src='$foto'></td>
-				<td><a href = 'perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'>Ver Perfil</a></td>
+				<td><img style = 'width:220px; height:auto' src='$foto'></td>
+				<td><a href = 'perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome' style='font-size:24px' class='far fa-eye'></a></td>
 				<td>";
 				
 				if($registro1){
 
 
 					if($status == 1){
-				echo "<a href='deixar_seguir.php?id_pessoa=$id_pessoa'>Deixar de seguir";
+				echo "<a href='deixar_seguir.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-user-alt-slash'>";
 					}else{
 						if($status == 0){
-						echo "<a href='retirar_solicitacao.php?id_pessoa=$id_pessoa'>Retirar Solicitação";	
+						echo "
+						<a style='font-size:24px' href= 'aceitar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'  class='fas fa-hand-point-up'></a></td>
+						<td><a style='font-size:24px' href= 'declinar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario' class='fas fa-hand-point-down'>";	
 										
 				}else{
 					if($status == 3){
 					
-				echo "<a href='post.php?id_pessoa=$id_pessoa'>Voltar para Perfil";
+				echo "<a href='post.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-home'>";
 				}else{
 					if($status == 2){
-					echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa'>Adicionar";
+					echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-plus'>";
 					}
 				}
 			}
 			}
 		}else{
-			echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa'>Adicionar";
+			echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-plus'>";
 		}
 				
 				echo "</a></td>
@@ -132,6 +135,7 @@ if ($_POST != NULL) {
 	}		
 
 ?>
-
+</div></div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

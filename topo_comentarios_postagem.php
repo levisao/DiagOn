@@ -212,6 +212,13 @@ border-left-color: #2dcb73;
 }
 .status-upload form button > i {
 margin-right: 7px;
+
+}
+textarea{
+   height: 100px;
+   width: 98%;
+   padding:1%;
+   border:1;
 }
 
 

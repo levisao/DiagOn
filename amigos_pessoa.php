@@ -7,7 +7,7 @@
 	//inicia sessao (pode botar la no inicio tbm, embaixo de error_reporting - adicionado para o index
 	session_start();
 	
-	
+	$id_usuario = $_SESSION["id_usuario"];
 	$id_pessoa = $_GET["id_pessoa"];
 	$nome_pessoa = $_GET["nome_pessoa"];
 
@@ -40,7 +40,7 @@
 
 echo "
 
-<h1>Amigos de $nome_pessoa</h1>
+<h1 style = 'text-align:center'>Amigos de $nome_pessoa</h1>
 
 ";
 
@@ -48,32 +48,14 @@ echo "
 
 <br>
 
-<!--
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == null) echo "active";?>" href="listar.php">Todos</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 1) echo "active";?>" href="listar.php?status=1">Aberto</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 2) echo "active";?>" href="listar.php?status=2">Em Andamento</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 3) echo "active";?>" href="listar.php?status=3">Fechado</a>
-  </li>
-</ul>
--->
 <br>
-<a  href="post.php">Voltar</a>
 
-<table border = 1>
-	<tr>
-		<th>Nome</th>
-		
-		<th>Foto</th>
-        <th style="text-align: center;" colspan="3">Ação</th>
-	</tr>
+
+<a href="post.php">Voltar</a>
+
+
+<div id="amigos" style = "background-color:lightblue">
+
 <?php
 
 
@@ -89,17 +71,6 @@ echo "
 		$foto_outra_pessoa = $registro["foto"];
 
 
-		
-		/*
-        // CSS do Status
-    	if ( $status == "Aberto" ) {
-    		$css_status = "background-color:#F0F8FF;";
-    	} else if ( $status == "Em Andamento" ) {
-    		$css_status = "background-color:orange;";
-    	} else if ( $status == "Fechado" ) {
-    		$css_status = "background-color:green;";
-    	}
-*/
 			
 			
 			
@@ -119,21 +90,35 @@ echo "
          $registro2 = $retorno2->fetch_array();
 		 
 		 $status = $registro2["status"];
-		
+		 	
 			
 			if($registro2){
 			
 			
-			
+			if($id_usuario == $id_outra_pessoa){
 
+			
+			
+			    	echo "<tr>
+				<td>$nome_outra_pessoa</td>
+				<td><img src='$foto_outra_pessoa' style = 'width:220px; height:auto'></td>
+                <td><a  href='perfil_pessoa.php?id_pessoa=$id_outra_pessoa&foto_pessoa=$foto_outra_pessoa&nome_pessoa=$nome_outra_pessoa'>Visualizar Perfil</a></td>
+                <td><a  href='post.php'>Voltar para Perfil</a></td>   
+            </tr> <br>";
+
+			
+			
+			}else{
+			
     	// imprime linha em HTML
     	echo "<tr>
 				<td>$nome_outra_pessoa</td>
-				<td><img src='$foto_outra_pessoa'></td>
+				<td><img src='$foto_outra_pessoa' style = 'width:220px; height:auto'></td>
                 <td><a  href='perfil_pessoa.php?id_pessoa=$id_outra_pessoa&foto_pessoa=$foto_outra_pessoa&nome_pessoa=$nome_outra_pessoa'>Visualizar Perfil</a></td>
-                <td><a class='btn btn-warning' href='post.php'>Deixar de Seguir</a></td>   
-                <td><a onclick=\"return confirm('Deseja Apagar?');\" class='btn btn-danger' href='logoff.php'>Sair</a></td>
-			</tr>";
+                <td><a onclick=\"return confirm('Deseja mesmo deixar de seguir?');\" class='btn btn-warning' href='post.php'>Deixar de Seguir</a></td>   
+            </tr> <br>";
+
+			}
 			}
     }
 // href='post.php?id=$id'
@@ -141,7 +126,7 @@ echo "
 ?>
 	
 </table>
-
+</div>
 
 <br>
 

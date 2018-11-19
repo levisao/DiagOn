@@ -81,34 +81,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container">
-    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-      <i class="fa fa-remove"></i>
-    </a>
-    <img src= <?php echo $foto ?> style="width:80%;" class="w3-round"><br><br>
-	<h4><b><?php echo $nome ?></b></h4>
-	<a  style='font-size:24px' class='far' href="editarperfil.php" ><i class='far fa-edit'></i></a> Editar<br><br>
-	<a  style='font-size:24px' class='far' href="postar.php" ><i class='fas fa-plus'></i></a> Postar
-  <!--  <p class="w3-text-grey">Template by W3.CSS</p>
-  </div>
-  <div class="w3-bar-block">
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
-    <a href="#creators" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CREATORS</a>
-  </div>-->
-  <!--<div class="w3-panel w3-large">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
-  </div>-->
-    <br><br><a  style='font-size:24px' class='far' href="amigos.php" ><i class='fas fa-user-friends'></i></a> Amigos
-	<br><br><a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar
-  <br><br><a  style='font-size:24px' class='far' href="logoff.php" ><i class='fas fa-power-off'></i></a> Sair
-</nav>
+<?php include_once "menu.php";?>
+  
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -122,14 +96,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
     <h1><b>Diagnóstico</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-      <span class="w3-margin-right">Filter:</span> 
-      <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
-    </div>
-    </div>
+   </div>
   </header>
   
   
@@ -159,7 +126,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 			
     	// obtem campos do registro
     	
-		
+		$id_postagem = $registro3["id"];
     	$titulo_postagem = $registro3["titulo"];
     	$texto_postagem = $registro3["texto"];
 		$foto_postagem = $registro3["foto"];
@@ -217,7 +184,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <p>$data_postagem</p>
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem'> comentar</a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'> comentar</a>
           </div>
 				</div>";
 			
@@ -236,7 +203,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
           <p>$data_postagem</p>
           <br>
           <a href = 'curtir_postagem.php'> curtir</a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem'> comentar</a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'> comentar</a>
           <a href = 'excluir_postagem.php'> excluir</a>
           <a href = 'editar_postagem.php'> editar</a>
           
@@ -252,59 +219,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   
   ?>
   
-  <!-- First Photo Grid-->
-  <!--
-  <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container">
-      <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-  </div>
-  -->
-  
-  <!-- Second Photo Grid-->
-  <!--
-  <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-    <div class="w3-third w3-container">
-      <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-  </div>
--->
+ 
   <!-- Pagination -->
   <div class="w3-center w3-padding-32">
     <div class="w3-bar">
@@ -317,7 +232,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-  <!-- Images of Me -->
+  <!-- Images of Me
   <div class="w3-row-padding w3-padding-16" id="about">
     <div class="w3-col m6">
       <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Me" style="width:100%">
@@ -325,15 +240,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-col m6">
       <img src="http://www.amigoviajante.com.br/img/usuario-sem-foto.png" alt="Me" style="width:100%">
     </div>
-  </div>
+  </div> -->
 
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     <h4><b>Sobre mim</b></h4>
      <?php echo $perfil; ?>
     <hr>
-    
+     <!-- 
     <h4>Especialidades</h4>
-    <!-- Progress bars / Skills -->
+   Progress bars / Skills 
     <p>Photography</p>
     <div class="w3-grey">
       <div class="w3-container w3-dark-grey w3-padding w3-center" style="width:95%">95%</div>
@@ -352,7 +267,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       </button>
     </p>
     <hr>
-
+-->
   
   <!-- Contact Section -->
   <div class="w3-container w3-padding-large w3-grey">
@@ -374,7 +289,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
         <p>999624185</p>
       </div>
     </div>
-    <hr class="w3-opacity">
+  <!--   <hr class="w3-opacity">
     <form action="/action_page.php" target="_blank">
       <div class="w3-section">
         <label>Nome</label>
@@ -392,7 +307,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </form>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer 
   <footer class="w3-container w3-padding-32 w3-dark-grey">
   <div class="w3-row-padding">
     <div class="w3-third">
@@ -429,9 +344,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
 
   </div>
-  </footer>
+  </footer>-->
   
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
+  <div class="w3-black w3-center w3-padding-24">Feito por <a href="http://andrecosta.info/unifacs/gamifica/usuarios/foto_perfil/512_20180808142933.jpeg" title="W3.CSS" target="_blank" class="w3-hover-opacity">Amanda </a> e <a href="http://andrecosta.info/unifacs/gamifica/usuarios/foto_perfil/515_20180826200751.jpeg" title="W3.CSS" target="_blank" class="w3-hover-opacity">Levi </a></div>
 
 <!-- End page content -->
 </div>
