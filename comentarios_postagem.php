@@ -132,6 +132,7 @@ if ($_POST != NULL) {
 	<textarea name="comentario" ></textarea>
 	<br>
 	<input type="submit" name="comentar" value="Comentar">
+	<a href = "post.php">  Voltar</a>
 </form>
 
 <?php
@@ -235,7 +236,6 @@ WHERE c.id_postagem = '$id_postagem' ORDER BY c.data ASC";
           </section>
     </div>
   </div>
-  <a href = "post.php">Voltar</a>
 </div>
 
 

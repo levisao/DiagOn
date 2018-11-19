@@ -36,15 +36,21 @@
 
     include_once "topo.php";
 ?>
-<div id="bordar" style = "text-align:center"><h1>Seus Amigos</h1>
+
+<h1 style = "text-align:center">Seus Amigos</h1>
+
+<div >    
+
+<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
+</div>
+<br>
+<br>
+<div id="bordar" style = "text-align:center">
+
 
 <br>
 
 
-<div style="text-align:center">    
-
-<a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
-</div>
 
 <div id="amigos" style = background-color:lightblue>
 <br>

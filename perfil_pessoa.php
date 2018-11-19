@@ -120,14 +120,7 @@ echo"
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
-    <h1><b>Diagnóstico</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-      <span class="w3-margin-right">Filter:</span> 
-      <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
-    </div>
+    
     </div>
   </header>
   
@@ -141,7 +134,7 @@ echo"
     <div class="w3-col m6">
     </div>
 <div class="w3-col m6">
-    <h3><b>Sobre mim</b></h3>
+    <h2><b>Sobre mim</b></h2>
      <?php echo $perfil; ?>
     <hr>
     </div>
@@ -187,7 +180,7 @@ echo"
 			
     	// obtem campos do registro
     	
-		
+		$id_postagem = $registro3["id"];
     	$titulo_postagem = $registro3["titulo"];
     	$texto_postagem = $registro3["texto"];
 		$foto_postagem = $registro3["foto"];
@@ -227,9 +220,33 @@ echo"
 
           <p>$data_postagem</p>
           
-          <br>
-          <a href = 'curtir_postagem.php'> curtir</a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem'> comentar</a>
+          <br>";
+		  
+		  
+		  $sql6 = "SELECT COUNT(id) AS qtd_likes 
+				FROM curtir 
+				WHERE id_postagem = '$id_postagem'";
+				
+				$retorno6 = $con->query($sql6);
+
+			// Deu erro?
+			if ($retorno6 == false){ 
+				echo $con->error; 
+				
+			}
+
+         $registro6 = $retorno6->fetch_array();
+		 
+		 $qtd_likes = $registro6["qtd_likes"];
+		 
+		 
+		 
+		  echo "
+		  
+		  
+		  
+          <a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'>$qtd_likes curtir</font></b></a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'> comentar</a>
           </div>
 				</div>";
 			
