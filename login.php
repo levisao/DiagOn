@@ -44,6 +44,7 @@ if ($_POST != NULL) {
 		$_SESSION["logado"] = true;
 		$_SESSION["nome_usuario"] = $registro["nome"];
 		$_SESSION["id_usuario"] = $registro["id"];
+		$_SESSION["foto_usuario"] = $registro["foto"];
 		
 		
 		

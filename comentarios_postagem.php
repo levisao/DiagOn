@@ -1,6 +1,6 @@
 <?php
 
-
+error_reporting(1);
 session_start();
 
 // Está logado?
@@ -18,6 +18,9 @@ $texto_postagem = $_GET["texto_postagem"];
 $id_usuario = $_SESSION["id_usuario"];
 $id_postagem = $_GET["id_postagem"];
 $id_usuario_postagem = $_GET["id_pessoa"];
+
+$foto = $_SESSION["foto_usuario"];
+$nome = $_SESSION["nome_usuario"];
 
 include_once "bd.php";
 
@@ -97,6 +100,13 @@ if ($_POST != NULL) {
 
 }
 include_once "topo_1.php";
+
+?>
+
+<?php
+
+
+include_once "menu.php";
 ?>
 
 
@@ -109,7 +119,7 @@ include_once "topo_1.php";
 <!------ Include the above in your HEAD tag ---------->
 
 
-<div class="container">
+<div class="container" style="margin-left:350px">
 	<?php
 	echo "
 	<img src = '$foto_postagem' style = 'width:750px; height:auto'>
@@ -123,6 +133,7 @@ include_once "topo_1.php";
     <br>
     <p>$texto_postagem</p>
 ";
+
     	?>
       <h2 class="page-header">Comentários</h2>
 

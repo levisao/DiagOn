@@ -82,8 +82,21 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 
 <!-- Sidebar/menu -->
-<?php include_once "menu.php";?>
-  
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container">
+    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <img width='200px' height='auto' src= <?php echo $foto ?> style="width:80%;" class="w3-round"><br><br>
+	<h4><b><?php echo $nome ?></b></h4>
+	<!--<a  style='font-size:24px' class='far' href="post.php" ><i class='fas fa-home'></i></a> Início <br><br>-->
+	<a  style='font-size:24px' class='far' href="editarperfil.php" ><i class='far fa-edit'></i></a> Editar<br><br>
+	<a  style='font-size:24px' class='far' href="postar.php" ><i class='fas fa-plus'></i></a> Postar<br><br>
+	<a  style='font-size:24px' class='far' href="amigos.php" ><i class='fas fa-user-friends'></i></a> Amigos<br><br>
+	<a  style='font-size:24px' class='far' href="solicitacao.php" ><i class='fas fa-user-plus'></i></a> Solicitações<br><br>
+	<a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar<br><br>
+    <a  style='font-size:24px' class='far' href="logoff.php" ><i class='fas fa-power-off'></i></a> Sair
+</nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -268,16 +281,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   
  
   <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-    </div>
-  </div>
+  
 
 
 
