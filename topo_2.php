@@ -12,61 +12,49 @@
 		
 	<style>
 		body{
-			 background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz2eGGE63ikz9ByAVYe7l_uXVgbfVdaYD_gkRDp1IgsrZ6FQrC");
+			 background-image: url("img/cadastro.jpeg");	
 			 background-size: auto;
-			 background-repeat: repeat;
+			 background-repeat: no-repeat;
 			 background-size: 100% 100%;
 			}
 		h1{
 			align: center;
 			valign: middle;
 		}
-#inicio{
+
+	#login{
 	position: absolute;
-    width: 300px;
-    height: 300px;
-    margin-top: -150px;
+	background-color: white;	
+    width: 400px;
+    height: 160px;
+    margin-top: -50px;
     margin-left: -150px;
-    top: 80%;
-    left: 82%;
+
+    top: 10%;
+    left: 72%;
+
 	text-align:center;
 	}
-#cadastro{
+    #cadastro{
 	position: absolute;
+	background-color: white;
     width: 400px;
-    height: 400px;
+    height: 360px;
     margin-top: -150px;
     margin-left: -150px;
-    top: 65%;
-    left: 40%;
+    top: 15%;
+    left: 70%;
 	text-align:center;
-	}	
-#amigos{
-	position: absolute;
-     margin-top: -150px;
-    margin-left: -150px;
-	top:30%;
-    left: 40%;
-	text-align:center;
-}
-#busca{
-	position: absolute;
-     margin-top: -150px;
-    margin-left: -150px;
-	top:45%;
-    left: 40%;
-	text-align:center;
-}
+	}
 	#perfil{
 	position: absolute;
+	background-color: white;
     width: 400px;
-    height: 250px;
+    height: 150px;
     margin-top: -150px;
     margin-left: -150px;
     top: 30%;
-    left: 50%;
+    left: 70%;
 	text-align:center;
 	}
-	</style>
-	</head>
-	<body>
+	#cadastro{

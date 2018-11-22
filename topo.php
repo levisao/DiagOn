@@ -12,10 +12,10 @@
 		
 	<style>
 		body{
-			 background-image: url("https://polizei-news-agenturbelmediag.netdna-ssl.com/wp-content/uploads/2014/04/Gesundheitswesen-everything-possible-Shutterstock.com_.jpg");
-			 background-size: auto;
+			 background-image: url("img/bg.jpeg");	
+			 
 			 background-repeat: no-repeat;
-			 background-size: 100% 100%;
+			
 			}
 		h1{
 			align: center;
@@ -23,24 +23,64 @@
 		}
 #inicio{
 	position: absolute;
-    width: 300px;
-    height: 300px;
-    margin-top: -150px;
+	background-color: white;	
+    width: 400px;
+    height: 160px;
+    margin-top: -50px;
     margin-left: -150px;
-    top: 80%;
-    left: 82%;
+
+    top: 20%;
+    left: 72%;
+
 	text-align:center;
 	}
-#cadastro{
+	#login{
 	position: absolute;
+	background-color: white;	
     width: 400px;
-    height: 400px;
+    height: 160px;
+    margin-top: -50px;
+    margin-left: -150px;
+
+    top: 10%;
+    left: 72%;
+
+	text-align:center;
+	}
+    #cadastro{
+	position: absolute;
+	background-color: white;
+    width: 400px;
+    height: 360px;
     margin-top: -150px;
     margin-left: -150px;
-    top: 65%;
-    left: 40%;
+    top: 15%;
+    left: 70%;
 	text-align:center;
-	}	
+	}
+	#perfil{
+	position: absolute;
+	background-color: white;
+    width: 400px;
+    height: 150px;
+    margin-top: -150px;
+    margin-left: -150px;
+    top: 30%;
+    left: 70%;
+	text-align:center;
+	}
+	#cadastro{
+	position: absolute;
+	background-color: white;
+    width: 400px;
+    height: 360px;
+    margin-top: -150px;
+    margin-left: -150px;
+    top: 15%;
+    left: 70%;
+	text-align:center;
+	}
+	/*	
 #amigos{
 	position: absolute;
      margin-top: -150px;
@@ -57,6 +97,9 @@
     left: 40%;
 	text-align:center;
 }
+
+*/
+
 	</style>
 	</head>
 	<body>

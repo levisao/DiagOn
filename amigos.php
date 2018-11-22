@@ -55,6 +55,12 @@
 <div id="amigos" >
 <br>
 <table>
+	
+</table>
+
+	
+</div></div>
+
 
 <?php
 
@@ -106,17 +112,12 @@
 			}
 
     }
-// href='post.php?id=$id'
+include_once "menu.php"
 
 ?>
 	
 
 
-</table>
-
-	
-</div></div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
 
 </body>
 </html>

@@ -35,6 +35,7 @@ $retorno = $con->query($sql);
 // Deu erro?
 if ($retorno == false){ 
 	echo $con->error; 
+
 	
 }
 
@@ -46,13 +47,13 @@ if ($retorno == false){
 
 
 ?>
-
+<?php include_once "menu.php"?>
 <form method="post">
 
 <h1 align="center">Buscar usuários </h1>
 <div align="center" > 
 <input type="text" name="nome" maxlength="100">
-<input type="submit" class="w3-button w3-green w3-border w3-border-Blue w3-round-large" value="Buscar">
+<input type="submit" class="w3-button w3-blue w3-border w3-border-Blue w3-round-large" value="Buscar">
 
 <br>
 
@@ -137,6 +138,5 @@ if ($_POST != NULL) {
 ?>
 </div></div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php" >Voltar</a>
 </body>
 </html>

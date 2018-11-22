@@ -1,6 +1,6 @@
 <?php 
 
-include_once "topo.php";
+include_once "topo_1.php";
 
 // Não exibe msg de notificação
 error_reporting(1);
@@ -172,10 +172,10 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 
 }
 
-
+include_once "menu.php"
 ?>
 
-<div id="cadastro">
+<div id="perfil">
 <h1>Editar perfil</h1>
 
 <form method="post">
@@ -188,7 +188,7 @@ if ($_POST != NULL) {     //NAO TA ENTRANDO AQUI
 	<!-- <input type="file" name="foto" id="fileToUpload"> -->
 	
 	</table>
-		  <a class="w3-button w3-green w3-border w3-border-Blue w3-round-large" href="post.php">Cancelar</a>
-  <button class="w3-button w3-green w3-border w3-border-Blue w3-round-large">Salvar</button>
+		  <a class="w3-button w3-blue w3-border w3-border-Blue w3-round-large" href="post.php">Cancelar</a>
+  <button class="w3-button w3-blue w3-border w3-border-Blue w3-round-large">Salvar</button>
 </form>
 </div>
