@@ -48,22 +48,6 @@ echo "
 
 <br>
 
-<!--
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == null) echo "active";?>" href="listar.php">Todos</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 1) echo "active";?>" href="listar.php?status=1">Aberto</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 2) echo "active";?>" href="listar.php?status=2">Em Andamento</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link <?php if ($_GET["status"] == 3) echo "active";?>" href="listar.php?status=3">Fechado</a>
-  </li>
-</ul>
--->
 <br>
 
 <div id="amigos">

@@ -2,6 +2,11 @@
 
 session_start();
 
+// Está logado?
+  if ($_SESSION["logado"] == NULL) {
+      header("Location: login.php");
+  }
+  
 $id_usuario = $_SESSION["id_usuario"];
 $id_pessoa = $_GET["id_pessoa"];
 $status = 0;
@@ -32,8 +37,8 @@ include_once "bd.php";
 
           // Cria comando SQL
     $sql3 = "UPDATE amigo 
-          SET status = ?, id_usuario_1 = ?, id_usuario_2 = ?
-           WHERE id_usuario_1 = ? and id_usuario_2 = ?";
+          SET status = ?
+           WHERE id_usuario_1 = ? and id_usuario_2 = ? OR id_usuario_1 = ? and id_usuario_2 = ?";
     
 
     // Prepara query

@@ -9,12 +9,16 @@ error_reporting(1);
 // Inicia a sessão
 session_start();
 
-$id_usuario = $_SESSION["id_usuario"];
 
 // Está logado?
 if ($_SESSION["logado"] == NULL) {
   header("Location: login.php");
 }
+$id_usuario = $_SESSION["id_usuario"];
+
+
+$foto = $_SESSION["foto_usuario"];
+$nome = $_SESSION["nome_usuario"];
 
 // Conecta ao DB
 include_once "bd.php";
@@ -56,7 +60,7 @@ if ($retorno == false){
 <input type="submit" class="w3-button w3-blue w3-border w3-border-Blue w3-round-large" value="Buscar">
 
 <br>
-
+<a href="post.php">Voltar</a>
 <div id="busca">
 </form>
 
@@ -92,6 +96,7 @@ if ($_POST != NULL) {
          $registro1 = $retorno1->fetch_array();
 		 
 		 $status = $registro1["status"];
+		 $id_dono = $registro1["id_usuario_1"];
 		
     	// imprime linha em HTML
     	echo "<tr>
@@ -104,9 +109,9 @@ if ($_POST != NULL) {
 
 
 					if($status == 1){
-				echo "<a href='deixar_seguir.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-user-alt-slash'>";
+				echo "<a href='desfazer_amizade.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-user-alt-slash'>";
 					}else{
-						if($status == 0){
+						if($status == 0 && $id_dono != $id_usuario){
 						echo "
 						<a style='font-size:24px' href= 'aceitar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'  class='fas fa-hand-point-up'></a></td>
 						<td><a style='font-size:24px' href= 'declinar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario' class='fas fa-hand-point-down'>";	
@@ -118,6 +123,13 @@ if ($_POST != NULL) {
 				}else{
 					if($status == 2){
 					echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-plus'>";
+					}
+					else{
+						if($status == 0 && $id_dono == $id_usuario){
+						echo "
+							<td><a style='font-size:24px' href= 'retirar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario' class='fas fa-user-times'>";	
+												
+						}
 					}
 				}
 			}

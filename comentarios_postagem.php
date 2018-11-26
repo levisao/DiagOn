@@ -101,9 +101,6 @@ if ($_POST != NULL) {
 }
 include_once "topo_1.php";
 
-?>
-
-<?php
 
 
 include_once "menu.php";

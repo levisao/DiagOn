@@ -7,6 +7,13 @@
 	//inicia sessao (pode botar la no inicio tbm, embaixo de error_reporting - adicionado para o index
 	session_start();
 	
+	// Está logado?
+  if ($_SESSION["logado"] == NULL) {
+      header("Location: login.php");
+  }
+  
+	$foto = $_SESSION["foto_usuario"];
+	$nome = $_SESSION["nome_usuario"];
 	
 	$id_usuario = $_SESSION["id_usuario"];
 	
@@ -35,14 +42,13 @@
     }
 
     include_once "topo_1.php";
+	
+include_once "menu.php"
 ?>
 
 <h1 style = "text-align:center">Seus Amigos</h1>
 
-<div >    
 
-
-</div>
 <br>
 <br>
 <div id="bordar" style = "text-align:center">
@@ -53,13 +59,12 @@
 
 
 <div id="amigos" >
+<a href = "post.php">Voltar</a>
 <br>
-<table>
+<table style = "text-align:center">
 	
-</table>
 
 	
-</div></div>
 
 
 <?php
@@ -107,16 +112,15 @@
 				<td>$nome</td>
 				<td><img width='200px' height='200px'  src='$foto'></td>
                 <td><a  style='font-size:24px' class='far fa-eye'href='perfil_pessoa.php?id_pessoa=$id_pessoa&foto_pessoa=$foto&nome_pessoa=$nome'></a></td>
-               <td><a onclick=\"return confirm('Deseja desfazer amizade?');\" style='font-size:24px' class='fas fa-user-alt-slash' href='post.php'></a></td>
+               <td><a onclick=\"return confirm('Deseja desfazer amizade?');\" style='font-size:24px' class='fas fa-user-alt-slash' href='desfazer_amizade.php?id_pessoa=$id_pessoa'></a></td>
 			</tr> <br>";
 			}
 
     }
-include_once "menu.php"
 
 ?>
 	
-
+</table>
 
 
 </body>

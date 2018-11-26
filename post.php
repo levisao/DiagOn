@@ -213,12 +213,29 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
          $registro6 = $retorno6->fetch_array();
 		 
 		 $qtd_likes = $registro6["qtd_likes"];
+			
+			 $sql7 = "SELECT COUNT(id_postagem) AS qtd_coments 
+				FROM comentarios 
+				WHERE id_postagem = '$id_postagem'";
+				
+				$retorno7 = $con->query($sql7);
+
+			// Deu erro?
+			if ($retorno7 == false){ 
+				echo $con->error; 
+				
+			}
+
 		 
+		 $registro7 = $retorno7->fetch_array();
+		 
+		 
+		 $qtd_coments = $registro7["qtd_coments"];
 		 
 		 
 		  echo "
-          <a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'>$qtd_likes curtir</font></b></a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'> comentar</font></b></a>
+          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a><a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'> curtir</font></b></a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'>$qtd_coments comentar</font></b></a>
           </div>
 				</div>";
 			
@@ -230,7 +247,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
             // imprime linha em HTML
       echo "    
           <div class='w3-third w3-container w3-margin-bottom'>
-          <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
+          <img  width='200px' height='200px' src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
           <div class='w3-container w3-white'>
           <p><b><a href = 'perfil_pessoa.php?id_pessoa=$id_usuario_postagem&foto_pessoa=$foto_usuario_postagem&nome_pessoa=$nome_usuario_postagem'>$nome_usuario_postagem</a></b></p>
           <p><b>$titulo_postagem</b></p>
@@ -257,13 +274,35 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		 $qtd_likes = $registro6["qtd_likes"];
 		 
 		 
+		 $qtd_likes = $registro6["qtd_likes"];
+			
+			 $sql7 = "SELECT COUNT(id_postagem) AS qtd_coments 
+				FROM comentarios 
+				WHERE id_postagem = '$id_postagem'";
+				
+				$retorno7 = $con->query($sql7);
+
+			// Deu erro?
+			if ($retorno7 == false){ 
+				echo $con->error; 
+				
+			}
+
+		 
+		 $registro7 = $retorno7->fetch_array();
+		 
+		 
+		 $qtd_coments = $registro7["qtd_coments"];
+		 
+		 
+		 
 		 
 		  echo "
 		  
 		  
 		  
-          <a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'>$qtd_likes curtir</font></b></a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'> comentar</font></b></a>
+          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a><a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'> curtir</font></b></a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'>$qtd_coments comentar</font></b></a>
           <a href = 'excluir_postagem.php'> excluir</a>
           <a href = 'editar_postagem.php'> editar</a>
           

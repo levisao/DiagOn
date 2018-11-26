@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+
+// Está logado?
+  if ($_SESSION["logado"] == NULL) {
+      header("Location: login.php");
+  }
+  
 include_once "bd.php";
 
 $id_usuario = $_SESSION["id_usuario"];

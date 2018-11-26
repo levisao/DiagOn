@@ -17,7 +17,7 @@ $foto_pessoa = $_GET["foto_pessoa"];
 
 $id_pessoa = $_GET["id_pessoa"];
 
-
+$id_usuario = $_SESSION["id_usuario"];
 // Conecta ao DB
 include_once "bd.php";
 
@@ -109,6 +109,73 @@ echo"
     ?>
 
   <a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar<br><br>
+  
+  <?php 
+  
+  
+  
+  
+  
+  
+  		$sql1 = "SELECT *
+		FROM amigo 
+		WHERE id_usuario_1 = '$id_usuario' AND id_usuario_2 = '$id_pessoa' 
+		OR 
+		id_usuario_1 = '$id_pessoa' AND id_usuario_2 = '$id_usuario'";
+
+			// Executa SQl no DB
+			$retorno1 = $con->query($sql1);
+
+			// Deu erro?
+			if ($retorno1 == false){ 
+				echo $con->error; 
+				
+			}
+
+         $registro1 = $retorno1->fetch_array();
+		 
+		 $status = $registro1["status"];
+		 $id_dono = $registro1["id_usuario_1"];
+		
+    					
+				if($registro1){
+
+
+					if($status == 1){
+				echo "<a href='desfazer_amizade.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-user-alt-slash'></a> Desfazer Amizade";
+					}else{
+						if($status == 0 && $id_dono != $id_usuario){
+						echo "
+						<a style='font-size:24px' href= 'aceitar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario'  class='fas fa-hand-point-up'></a>Aceitar</td>
+						<td><a style='font-size:24px' href= 'declinar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario' class='fas fa-hand-point-down'></a>Recusar";	
+										
+				}else{
+					if($status == 2){
+					echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-plus'></a> Adicionar Pessoa";
+					}
+					else{
+						if($status == 0 && $id_dono == $id_usuario){
+						echo "
+							<td><a style='font-size:24px' href= 'retirar_solicitacao.php?id_pessoa=$id_pessoa&id_usuario=$id_usuario' class='fas fa-user-times'></a> Retirar Solicitação";	
+												
+						}
+					}
+				}
+			}
+			
+		}else{
+			echo "<a href='adicionar_amigo.php?id_pessoa=$id_pessoa' style='font-size:24px' class='fas fa-plus'></a> Adicionar Amigos";
+		}
+				
+				echo "</td>
+				
+			</tr>";
+
+  
+  
+  ?>
+  <br>
+  <br>
     <a  style='font-size:24px' class='far' href="logoff.php" ><i class='fas fa-power-off'></i></a> Sair
 </nav>
 
@@ -244,13 +311,33 @@ echo"
 		 $qtd_likes = $registro6["qtd_likes"];
 		 
 		 
+		 	 $sql7 = "SELECT COUNT(id_postagem) AS qtd_coments 
+				FROM comentarios 
+				WHERE id_postagem = '$id_postagem'";
+				
+				$retorno7 = $con->query($sql7);
+
+			// Deu erro?
+			if ($retorno7 == false){ 
+				echo $con->error; 
+				
+			}
+
+		 
+		 $registro7 = $retorno7->fetch_array();
+		 
+		 
+		 $qtd_coments = $registro7["qtd_coments"];
+		 
+		 
+		 
 		 
 		  echo "
 		  
 		  
 		  
-          <a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'>$qtd_likes curtir</font></b></a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'> comentar</font></b></a>
+          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a><a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'> curtir</font></b></a>
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'>$qtd_coments comentar</font></b></a>
           </div>
 				</div>";
 			
@@ -298,6 +385,8 @@ echo"
   </div>
   </footer>
   
+  
+  <div class="w3-black w3-center w3-padding-24">Feito por <a href="http://andrecosta.info/unifacs/gamifica/usuarios/foto_perfil/512_20180808142933.jpeg" title="W3.CSS" target="_blank" class="w3-hover-opacity">Amanda </a> e <a href="http://andrecosta.info/unifacs/gamifica/usuarios/foto_perfil/515_20180826200751.jpeg" title="W3.CSS" target="_blank" class="w3-hover-opacity">Levi </a></div>
 
 <!-- End page content -->
 </div>
