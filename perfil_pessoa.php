@@ -64,7 +64,7 @@ $registro1 = $retorno1->fetch_array();
 if($registro1){
 	
 $foto = $registro1["foto"];
-$_SESSION["foto_usuario"] = $registro1["foto"];
+//$_SESSION["foto_usuario"] = $registro1["foto"];
 
 } else{
     $perfil = ""; // poderia criar o perfil aqui logo
@@ -274,7 +274,7 @@ echo"
 		
 		$nome_usuario_postagem = $registro4["nome"];
 		
-
+		$foto_usuario_postagem = $registro4["foto"];
 		
 
 		if($registro3){
@@ -285,7 +285,7 @@ echo"
 
 				  <img src='$foto_postagem' alt='Norway' style='width:100%' class='w3-hover-opacity'>
 				  <div class='w3-container w3-white'>
-				  <p><b><a href = 'perfil_amigo.php'>$nome_usuario_postagem</a></b></p>
+				  <p><b><a href = 'perfil_pessoa.php?id_pessoa=$id_usuario_postagem&foto_pessoa=$foto_usuario_postagem&nome_pessoa=$nome_usuario_postagem'>$nome_usuario_postagem</a></b></p>
 					<p><b>$titulo_postagem</b></p>
 					<p>$texto_postagem</p>
 

@@ -24,6 +24,11 @@ $nome = $_SESSION["nome_usuario"];
 
 include_once "bd.php";
 
+include_once "topo_1.php";
+
+
+
+include_once "menu.php";
 
 if ($_POST != NULL) {
 	
@@ -99,11 +104,6 @@ if ($_POST != NULL) {
 
 
 }
-include_once "topo_1.php";
-
-
-
-include_once "menu.php";
 ?>
 
 
