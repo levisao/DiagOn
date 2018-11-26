@@ -1,4 +1,3 @@
-
 <html>
 	<head>
 		<title>DiagOn</title>
@@ -12,16 +11,15 @@
 		
 	<style>
 		body{
-			 background-image: url("img/cadastro.jpeg");	
-			 background-size: auto;
+			 background-image: url("img/cadastro.jpg");	
+			 background-size: cover;
 			 background-repeat: no-repeat;
-			 background-size: 100% 100%;
+			
 			}
 		h1{
 			align: center;
 			valign: middle;
 		}
-
 	#login{
 	position: absolute;
 	background-color: white;	
@@ -30,7 +28,7 @@
     margin-top: -50px;
     margin-left: -150px;
 
-    top: 10%;
+    top: 30%;
     left: 72%;
 
 	text-align:center;
@@ -42,7 +40,7 @@
     height: 360px;
     margin-top: -150px;
     margin-left: -150px;
-    top: 15%;
+    top: 40%;
     left: 70%;
 	text-align:center;
 	}
@@ -57,4 +55,26 @@
     left: 70%;
 	text-align:center;
 	}
-	#cadastro{
+	
+#amigos{
+	position: absolute;
+     margin-top: -150px;
+    margin-left: -150px;
+	top:30%;
+    left: 40%;
+	text-align:center;
+}
+#busca{
+	position: absolute;
+     margin-top: -150px;
+    margin-left: -150px;
+	top:45%;
+    left: 40%;
+	text-align:center;
+}
+
+*/
+
+	</style>
+	</head>
+	<body>

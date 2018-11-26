@@ -1,7 +1,7 @@
 
 	
 	<?php
-	include_once "topo.php"; 
+	include_once "topo_2.php"; 
 
   // Não exibe msg de notificação
   error_reporting(1);
@@ -118,7 +118,7 @@
 
   <label>Senha</label>
    <input class="w3-input" type="password" name="senha" maxlength="100" required>
-
+<br><br>
   <a class="w3-button w3-blue w3-border w3-border-Blue w3-round-large" href="iniciar.php">Cancelar</a>
   <button class="w3-button w3-blue w3-border w3-border-Blue w3-round-large">Salvar</button>
 </form>

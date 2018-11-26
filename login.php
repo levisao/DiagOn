@@ -1,5 +1,5 @@
 <?php 
-include_once "topo.php"; 
+include_once "topo_2.php"; 
 
 // Não exibe msg de notificação
 error_reporting(1);
@@ -69,12 +69,12 @@ if ($_POST != NULL) {
 <h1><b>Login</b></h1>
 
 <form method="post" class="w3-container">
-	
+	<label>Login</label>
 	<input type="text" name="login"  class="w3-input" required>
-<label>Login</label>
-	
+
+	<label>Senha</label>
 	<input type="password" name="senha" class="w3-input" required>
-<label>Senha</label>
+
 <br>	<br>
 	<button class="w3-button w3-blue w3-border w3-border-Blue w3-round-large">Entrar</button>
 	<a class="w3-button w3-blue w3-border w3-border-Blue w3-round-large" href="iniciar.php">Cancelar</a>

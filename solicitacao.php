@@ -9,6 +9,7 @@
 	
 	
 	$id_usuario = $_SESSION["id_usuario"];
+	$foto = $_SESSION["foto_usuario"]; 
 	
 	// Está logado?     - adicionado para o index
 	if($_SESSION["logado"] == NULL){
@@ -35,6 +36,7 @@
     }
 
     include_once "topo_1.php";
+	include_once "menu.php"
 ?>
 <h1 style = "text-align:center">Solicitações de Amizade</h1>
 <div style = "text-align:center">

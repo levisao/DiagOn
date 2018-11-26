@@ -13,7 +13,7 @@
 	<style>
 		body{
 			 background-image: url("img/bg.jpeg");	
-			 
+			 background-size: cover;
 			 background-repeat: no-repeat;
 			
 			}
@@ -47,17 +47,7 @@
 
 	text-align:center;
 	}
-    #cadastro{
-	position: absolute;
-	background-color: white;
-    width: 400px;
-    height: 360px;
-    margin-top: -150px;
-    margin-left: -150px;
-    top: 15%;
-    left: 70%;
-	text-align:center;
-	}
+ 
 	#perfil{
 	position: absolute;
 	background-color: white;
@@ -69,18 +59,6 @@
     left: 70%;
 	text-align:center;
 	}
-	#cadastro{
-	position: absolute;
-	background-color: white;
-    width: 400px;
-    height: 360px;
-    margin-top: -150px;
-    margin-left: -150px;
-    top: 15%;
-    left: 70%;
-	text-align:center;
-	}
-	/*	
 #amigos{
 	position: absolute;
      margin-top: -150px;

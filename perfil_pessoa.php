@@ -336,8 +336,9 @@ echo"
 		  
 		  
 		  
-          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a><a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'> curtir</font></b></a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'>$qtd_coments comentar</font></b></a>
+          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a>
+		  <a  style='font-size:24px' class='far' href = 'curtir_postagem.php?id_postagem=$id_postagem'><i class='far fa-thumbs-up'></i></a> 
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><i class='far fa-comments'></i><b><font color='green'>$qtd_coments</font></b></a>
           </div>
 				</div>";
 			

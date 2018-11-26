@@ -59,8 +59,10 @@ include_once "menu.php"
 
 
 <div id="amigos" >
-<a href = "post.php">Voltar</a>
-<br>
+<!--<br><br><br>
+ <a class="w3-button w3-blue w3-border w3-border-Blue w3-round-large" href="post.php">Voltar</a>
+
+<br>-->
 <table style = "text-align:center">
 	
 

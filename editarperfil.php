@@ -15,6 +15,7 @@ if ($_SESSION["logado"] == NULL) {
 
 // Obtem ID
 $id = $_SESSION["id_usuario"];  
+$foto = $_SESSION["foto_usuario"]; 
 // Passou ID
 if ($id == NULL) {
 	echo "ID não foi passado! <br>";

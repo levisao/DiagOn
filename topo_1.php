@@ -37,8 +37,8 @@
     height: 400px;
     margin-top: -150px;
     margin-left: -150px;
-    top: 65%;
-    left: 40%;
+    top: 40%;
+    left: 50%;
 	text-align:center;
 	}	
 #amigos{

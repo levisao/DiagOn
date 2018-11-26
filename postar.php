@@ -1,7 +1,7 @@
 
 	
 	<?php
-	include_once "topo.php"; 
+	include_once "topo_1.php"; 
 
   // Não exibe msg de notificação
   error_reporting(1);
@@ -15,6 +15,7 @@
   }
 	
 	$id = $_SESSION["id_usuario"];
+	$foto = $_SESSION["foto_usuario"]; 
   // Clicou em salvar?
   if ($_POST != NULL) {
 
@@ -89,7 +90,7 @@
     }
 
   }
-
+include_once "menu.php"
 ?>
 
 

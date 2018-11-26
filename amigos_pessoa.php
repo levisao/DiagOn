@@ -7,17 +7,15 @@
 	//inicia sessao (pode botar la no inicio tbm, embaixo de error_reporting - adicionado para o index
 	session_start();
 	
-	
+		// Está logado?
+  if ($_SESSION["logado"] == NULL) {
+      header("Location: login.php");
+  }
+    
+	$foto = $_SESSION["foto_usuario"];
+	$nome = $_SESSION["nome_usuario"];
 	$id_pessoa = $_GET["id_pessoa"];
 	$nome_pessoa = $_GET["nome_pessoa"];
-
-	
-	// Está logado?     - adicionado para o index
-	if($_SESSION["logado"] == NULL){
-		
-		header("Location: login.php");
-		
-	}
 			
     // conecta ao BD
     include_once "bd.php";
@@ -43,7 +41,7 @@ echo "
 <h1>Amigos de $nome_pessoa</h1>
 
 ";
-
+include_once "menu.php"
 ?>
 
 <br>

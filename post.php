@@ -10,7 +10,6 @@ session_start();
 
   // Obtem ID
 $id = $_SESSION["id_usuario"];  
-
 $nome = $_SESSION["nome_usuario"];
 
 // Conecta ao DB
@@ -96,6 +95,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 	<a  style='font-size:24px' class='far' href="solicitacao.php" ><i class='fas fa-user-plus'></i></a> Solicitações<br><br>
 	<a  style='font-size:24px' class='far' href="buscar.php" ><i class='fas fa-search'></i></a> Buscar<br><br>
     <a  style='font-size:24px' class='far' href="logoff.php" ><i class='fas fa-power-off'></i></a> Sair
+	
+	<img width='200px' height='auto' src="img/logo.jpg" style="width:80%;" class="w3-round"><br><br>
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
@@ -135,7 +136,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		while ($registro3 = $retorno3->fetch_array()){ 
 			
 
-		if($cont <= 8){
+		if($cont <= 9){
 			
 			
     	// obtem campos do registro
@@ -234,8 +235,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		 
 		 
 		  echo "
-          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a><a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'> curtir</font></b></a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'>$qtd_coments comentar</font></b></a>
+          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a>
+		  <a  style='font-size:24px' class='far' href = 'curtir_postagem.php?id_postagem=$id_postagem'><i class='far fa-thumbs-up'></i></a> 
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><i class='far fa-comments'></i><b><font color='green'>$qtd_coments</font></b></a>
           </div>
 				</div>";
 			
@@ -301,8 +303,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 		  
 		  
 		  
-          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a><a href = 'curtir_postagem.php?id_postagem=$id_postagem'><b><font color='blue'> curtir</font></b></a>
-          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='green'>$qtd_coments comentar</font></b></a>
+          <a href = 'ver_curtidas.php?id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><b><font color='#00bfff'>$qtd_likes </font></b></a>
+		  <a  style='font-size:24px' class='far' href = 'curtir_postagem.php?id_postagem=$id_postagem'><i class='far fa-thumbs-up'></i></a> 
+          <a href = 'comentarios_postagem.php?foto_postagem=$foto_postagem&titulo_postagem=$titulo_postagem&texto_postagem=$texto_postagem&id_postagem=$id_postagem&id_pessoa=$id_usuario_postagem'><i class='far fa-comments'></i><b><font color='green'>$qtd_coments</font></b></a>
           <!--
 		  <a href = 'excluir_postagem.php'> excluir</a>
           <a href = 'editar_postagem.php'> editar</a>
